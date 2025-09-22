@@ -106,7 +106,7 @@
       # GSK_RENDERER=gl is to fix Rnote (or GTK apps) https://github.com/flxzt/rnote/issues/1061#issuecomment-2027992630
       config = rec {
         inherit modifier;
-        terminal = "foot";
+        terminal = "footclient";
         startup = [
           {
             command = "${pkgs.firefox}/bin/firefox";
@@ -137,7 +137,7 @@
           "${modifier}+Alt+L" = "exec swaylock";
           "${modifier}+Shift+Return" = "exec firefox";
           "${modifier}+Alt+Shift+Return" = "exec chromium";
-          "${modifier}+Return" = "exec foot";
+          "${modifier}+Return" = "exec footclient";
           "${modifier}+Alt+Return" = "exec ${pkgs.rnote}/bin/rnote";
           "${modifier}+Alt+N" = "exec ${pkgs.mako}/bin/makoctl menu 'fuzzel -d' -p '通知'";
           "${modifier}+N" = "exec ${pkgs.mako}/bin/makoctl dismiss";

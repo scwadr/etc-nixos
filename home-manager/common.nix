@@ -81,6 +81,7 @@
     in
     {
       enable = true;
+      server.enable = true;
       settings.colors.alpha = 0.5;
       settings.colors.background = "000000";
       settings.main.shell = "fish";

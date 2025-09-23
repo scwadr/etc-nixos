@@ -82,4 +82,6 @@
     80
     443
   ];
+
+  autoUpgrade.directFlake = true;
 }

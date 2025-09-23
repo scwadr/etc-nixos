@@ -14,7 +14,6 @@
     ../headless.nix
     ../base.nix
     ../syncthing.nix
-    ../autoUpgrade-https.nix
     ../hisame.nix
     ../seekback-server.nix
     ./backup.nix

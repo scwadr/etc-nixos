@@ -75,7 +75,7 @@
     virtualHosts."sync-pdf-viewer.2kendon.ca" = {
       extraConfig = ''
         encode gzip
-        reverse_proxy http://localhost:${builtins.toString services.sync-pdf-viewer.port}
+        reverse_proxy http://localhost:${builtins.toString config.services.sync-pdf-viewer.port}
       '';
     };
   };

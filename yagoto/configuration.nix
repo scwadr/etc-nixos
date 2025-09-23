@@ -4,6 +4,7 @@
   pkgs,
   modulesPath,
   nixos-hardware,
+  sync-pdf-viewer,
   ...
 }:
 {

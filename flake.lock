@@ -266,52 +266,6 @@
         "type": "github"
       }
     },
-    "jks": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1739059288,
-        "narHash": "sha256-Kib9Lyz17nTHrK8M6+F9udQzOBIApUSesn5zqVgcFIU=",
-        "owner": "nyiyui",
-        "repo": "jks",
-        "rev": "007727adac5fcf3d7234730a9c52ce7af438c594",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nyiyui",
-        "repo": "jks",
-        "type": "github"
-      }
-    },
-    "jts": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1744583515,
-        "narHash": "sha256-bl0UweVLnfSBQfPxrKAC2Zyha/n8ezf+X6bTCE7P0Aw=",
-        "owner": "nyiyui",
-        "repo": "jts",
-        "rev": "1ed440dd9070fed1ad86286b13235ac6718bb6c7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nyiyui",
-        "repo": "jts",
-        "type": "github"
-      }
-    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -566,8 +520,6 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",
-        "jks": "jks",
-        "jts": "jts",
         "lanzaboote": "lanzaboote",
         "niri": "niri",
         "nixos-hardware": "nixos-hardware",

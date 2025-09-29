@@ -5,12 +5,6 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    jks.url = "github:nyiyui/jks";
-    jks.inputs.nixpkgs.follows = "nixpkgs";
-    jks.inputs.flake-utils.follows = "flake-utils";
-    jts.url = "github:nyiyui/jts";
-    jts.inputs.nixpkgs.follows = "nixpkgs";
-    jts.inputs.flake-utils.follows = "flake-utils";
     seekback-server.url = "github:nyiyui/seekback-server";
     seekback-server.inputs.nixpkgs.follows = "nixpkgs";
     seekback-server.inputs.flake-utils.follows = "flake-utils";

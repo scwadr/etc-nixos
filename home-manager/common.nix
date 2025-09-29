@@ -138,6 +138,8 @@
       nixfmt-rfc-style
 
       codex
+
+      epiphany
     ]
     ++ (with pkgs.libsForQt5; [
       okular

@@ -89,5 +89,5 @@
   security.sudo.wheelNeedsPassword = false;
 
   autoUpgrade.directFlake = true;
-  boot.initrd.systemd.emergencyAccess = true;  # or set to a password hash
+  boot.initrd.systemd.emergencyAccess = true; # or set to a password hash
 }

@@ -13,6 +13,7 @@
     ../secureboot.nix
     specialArgs.disko.nixosModules.disko
     ../autoUpgrade-git.nix
+    ../tpm.nix
   ];
 
   boot.initrd.systemd.enable = true;

@@ -69,7 +69,7 @@
     ];
     homeMode = "770";
   };
-  services.getty.autologinUser = "root";
+  services.getty.autologinUser = "kiyurica";
   users.users.root.hashedPassword = "$y$j9T$kEWnEW49.oTNiP3mW9hQu/$MTh5TvNot3F5Ae8lT/R4ErHLerCpYsCASXBM47nh6n.";
 
   nix.settings.trusted-users = [ "kiyurica" ];

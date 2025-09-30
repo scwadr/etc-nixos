@@ -19,12 +19,5 @@
       automatic = true;
       randomizedDelaySec = "1h";
     };
-    nix.extraOptions = ''
-      !include ${config.age.secrets.nix-conf-access-tokens.path}
-    '';
-    age.secrets.nix-conf-access-tokens = {
-      file = ./secrets/nix-conf-access-tokens-${config.networking.hostName}.age;
-      mode = "0440";
-    };
   };
 }

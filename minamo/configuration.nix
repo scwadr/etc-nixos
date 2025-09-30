@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  specialArgs,
   ...
 }:
 
@@ -10,6 +11,7 @@
     ./disko-config.nix
     ./impermanence.nix
     ../secureboot.nix
+    specialArgs.disko.nixosModules.disko
   ];
 
   boot.initrd.availableKernelModules = [

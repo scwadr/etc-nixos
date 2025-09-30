@@ -20,6 +20,7 @@
   boot.initrd.availableKernelModules = [
     "nvme"
   ];
+  boot.initrd.supportedFilesystems = [ "btrfs" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];

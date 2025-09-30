@@ -26,7 +26,6 @@
   boot.initrd.availableKernelModules = [
     "tpm_tis"
     "xhci_pci"
-    "thunderbolt"
     "vmd"
     "nvme"
     "usb_storage"

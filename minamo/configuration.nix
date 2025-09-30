@@ -12,6 +12,7 @@
     ./impermanence.nix
     # ../secureboot.nix
     specialArgs.disko.nixosModules.disko
+    ../all-modules.nix
   ];
 
   boot.initrd.systemd.enable = true;

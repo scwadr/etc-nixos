@@ -109,7 +109,7 @@
         terminal = "footclient";
         startup = [
           {
-            command = "epiphany";
+            command = "${pkgs.firefox}/bin/firefox";
             always = true;
           }
           {
@@ -135,7 +135,7 @@
           "XF86MonBrightnessDown" =
             ''exec fish --command='if [ "$(light)" -le 1 ]; then; light -S 1; else; light -U 1; end' '';
           "${modifier}+Alt+L" = "exec swaylock";
-          "${modifier}+Shift+Return" = "exec epiphany";
+          "${modifier}+Shift+Return" = "exec firefox";
           "${modifier}+Alt+Shift+Return" = "exec chromium";
           "${modifier}+Return" = "exec footclient";
           "${modifier}+Alt+Return" = "exec ${pkgs.rnote}/bin/rnote";

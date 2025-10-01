@@ -31,6 +31,10 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+  users.users.kiyurica = {
+    hashedPassword = "$y$j9T$lNSNPobnQX.GuwkdK4m.g0$/ivj88dtnxodfbZ1gmjn6AkabMh32qzsYjHr5i7jjD/";
+  };
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
@@ -51,8 +55,6 @@
 
   time.timeZone = "America/New_York";
   services.getty.autologinUser = "kiyurica";
-
-  security.sudo.wheelNeedsPassword = false;
 
   autoUpgrade.directFlake = true;
   boot.initrd.systemd.emergencyAccess = true;

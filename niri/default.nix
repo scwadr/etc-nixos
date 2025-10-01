@@ -11,7 +11,9 @@
   options.kiyurica.desktop.niri.enable = lib.mkEnableOption "Niri-based";
   options.kiyurica.desktop.niri.config = lib.mkOption {
     default = ''
-      Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+      binds {
+        Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+      }
     '';
     type = lib.types.lines;
     description = "config file contents";

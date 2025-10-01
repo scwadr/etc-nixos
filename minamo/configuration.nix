@@ -60,6 +60,6 @@
   boot.initrd.systemd.emergencyAccess = true;
 
   services.udisks2.enable = true;
-  kiyurica.desktop.sway.enable = true;
+  kiyurica.desktop.niri.enable = true;
   kiyurica.greeter.gtkgreet.enable = true;
 }

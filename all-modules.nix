@@ -16,5 +16,6 @@
     ./power-efficiency.nix
     ./displaylink.nix
     ./eduroam
+    ./niri.nix
   ];
 }

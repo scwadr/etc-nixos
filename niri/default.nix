@@ -10,11 +10,7 @@
 
   options.kiyurica.desktop.niri.enable = lib.mkEnableOption "Niri-based";
   options.kiyurica.desktop.niri.config = lib.mkOption {
-    default = ''
-      binds {
-        Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-      }
-    '';
+    default = builtins.readFile ./config.kdl;
     type = lib.types.lines;
     description = "config file contents";
   };
@@ -55,6 +51,18 @@
                 ExecStart = "${pkgs.swaybg}/bin/swaybg -mfill -i ${../wallpapers/takamatsu.jpg}";
                 Restart = "on-failure";
                 RestartSec = 3;
+              };
+              Install.WantedBy = [ "graphical-session.target" ];
+            };
+            systemd.user.services.import-environment = {
+              Unit = {
+                Description = "Import environment variables to systemd";
+                PartOf = [ "graphical-session.target" ];
+              };
+              Service = {
+                Type = "oneshot";
+                ExecStart = "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
+                RemainAfterExit = true;
               };
               Install.WantedBy = [ "graphical-session.target" ];
             };

@@ -31,7 +31,7 @@
     ];
     home-manager.users.kiyurica = {
       imports = [
-        ./home-manager/graphical.nix
+        ../home-manager/graphical.nix
         {
           imports = [
             ../home-manager/fuzzel.nix

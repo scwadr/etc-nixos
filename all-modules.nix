@@ -2,7 +2,7 @@
   # all modules which have an explicit "enable" option
   imports = [
     ./sway.nix
-    ./niri.nix
+    ./niri
     ./gtkgreet.nix
     ./tailscale.nix
     ./tailscale-cert.nix
@@ -16,6 +16,5 @@
     ./power-efficiency.nix
     ./displaylink.nix
     ./eduroam
-    ./niri.nix
   ];
 }

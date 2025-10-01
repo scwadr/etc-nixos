@@ -136,7 +136,10 @@
         specialArgs = attrs // {
           inherit system;
         };
-        modules = [ ./minamo/configuration.nix ];
+        modules = [
+          ./minamo/configuration.nix
+          agenix.nixosModules.default
+        ];
       };
     }
     // flake-utils.lib.eachSystem flake-utils.lib.defaultSystems (

@@ -31,6 +31,12 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+  hardware.graphics.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+  };
+
   users.users.kiyurica = {
     hashedPassword = "$y$j9T$lNSNPobnQX.GuwkdK4m.g0$/ivj88dtnxodfbZ1gmjn6AkabMh32qzsYjHr5i7jjD/";
   };

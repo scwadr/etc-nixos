@@ -6,7 +6,7 @@
   ...
 }:
 {
-  imports = [ ./home-manager.nix ];
+  imports = [ ../home-manager.nix ];
 
   options.kiyurica.desktop.niri.enable = lib.mkEnableOption "Niri-based";
   options.kiyurica.desktop.niri.config = lib.mkOption {

@@ -55,5 +55,9 @@
   security.sudo.wheelNeedsPassword = false;
 
   autoUpgrade.directFlake = true;
-  boot.initrd.systemd.emergencyAccess = true; # or set to a password hash
+  boot.initrd.systemd.emergencyAccess = true;
+
+  services.udisks2.enable = true;
+  kiyurica.desktop.sway.enable = true;
+  kiyurica.greeter.gtkgreet.enable = true;
 }

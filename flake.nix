@@ -17,7 +17,6 @@
     seekback.url = "github:nyiyui/seekback";
     seekback.inputs.nixpkgs.follows = "nixpkgs";
     seekback.inputs.flake-utils.follows = "flake-utils";
-    niri.url = "github:sodiboo/niri-flake";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
@@ -37,7 +36,6 @@
       agenix,
       nixpkgs,
       flake-utils,
-      niri,
       lanzaboote,
       ...
     }@attrs:

@@ -2,6 +2,7 @@
   # all modules which have an explicit "enable" option
   imports = [
     ./sway.nix
+    ./niri.nix
     ./gtkgreet.nix
     ./tailscale.nix
     ./tailscale-cert.nix

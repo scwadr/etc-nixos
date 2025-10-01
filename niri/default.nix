@@ -42,7 +42,7 @@
             xdg.configFile."niri/config.kdl" = {
               text = config.kiyurica.desktop.niri.config;
             };
-            systemd.user.services.swaybg = lib.mkIf config.kiyurica.graphical.background {
+            systemd.user.services.swaybg = {
               Unit = {
                 Description = "swaywm background";
                 PartOf = [ "graphical-session.target" ];

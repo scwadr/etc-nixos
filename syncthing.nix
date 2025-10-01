@@ -34,6 +34,7 @@
           "yagoto"
           "suzaku"
           "inaho"
+          "minamo"
         ];
         versioning.type = "staggered";
         versioning.params = {
@@ -51,6 +52,7 @@
           "suzaku"
           "inaho"
           "Pixel 6a"
+          "minamo"
         ];
         versioning.type = "trashcan";
         versioning.params.cleanoutDays = "0"; # never

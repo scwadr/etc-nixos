@@ -24,7 +24,7 @@ layout {
     }
     border { off; }
     preset-column-widths
-    default-column-width
+    default-column-width { proportion 0.4 };
     center-focused-column "never"
 }
 cursor {

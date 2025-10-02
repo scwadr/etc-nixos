@@ -28,6 +28,8 @@
     impermanence.url = "github:nix-community/impermanence";
     sync-pdf-viewer.url = "github:nyiyui/sync-pdf-viewer";
     sync-pdf-viewer.inputs.nixpkgs.follows = "nixpkgs";
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

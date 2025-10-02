@@ -22,6 +22,17 @@
   };
 
   config = lib.mkIf config.kiyurica.desktop.niri.enable {
+    nixpkgs.overlays = [
+      (
+        final: prev:
+        let
+          unstable = import nixpkgs-unstable { system = prev.system; };
+        in
+        {
+          niri = unstable.niri;
+        }
+      )
+    ];
     home-manager.users.kiyurica = {
       imports = [
         niri.homeModules.niri

@@ -253,6 +253,7 @@ in
     };
     home.packages = with pkgs; [
       jq # required by mako for e.g. mako menu
+      pavucontrol
     ];
 
     gtk.theme = {
@@ -288,8 +289,5 @@ in
         "${config.home.homeDirectory}/.nix-profile/share/applications/thunderbird.desktop"
       ];
     };
-    config.home.packages = with pkgs; [
-      pavucontrol
-    ];
   };
 }

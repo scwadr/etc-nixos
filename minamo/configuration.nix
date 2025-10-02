@@ -71,7 +71,11 @@
   boot.initrd.systemd.emergencyAccess = true;
 
   services.udisks2.enable = true;
-  kiyurica.desktop.niri.enable = true;
+  kiyurica.desktop.niri = {
+    enable = true;
+    enableUWSM = true;
+    default = true;
+  };
   kiyurica.greeter.gtkgreet.enable = true;
   kiyurica.tailscale.enable = true;
 }

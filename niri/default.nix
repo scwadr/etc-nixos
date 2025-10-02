@@ -6,13 +6,23 @@
   ...
 }:
 {
-  imports = [ ../home-manager.nix ];
+  imports = [
+    ../home-manager.nix
+    ./uwsm.nix
+    ./set-default.nix
+  ];
 
-  options.kiyurica.desktop.niri.enable = lib.mkEnableOption "Niri-based";
+  options.kiyurica.desktop.niri.enable = lib.mkEnableOption "a Niri-based desktop environment";
+  options.kiyurica.desktop.niri.enableUWSM = lib.mkEnableOption "UWSM support";
+  options.kiyurica.desktop.niri.default = lib.mkOption {
+    default = false;
+    type = lib.types.bool;
+    description = "set this as the default desktop environment";
+  };
   options.kiyurica.desktop.niri.config = lib.mkOption {
     default = builtins.readFile ./config.kdl;
     type = lib.types.lines;
-    description = "config file contents";
+    description = "Niri config file contents";
   };
 
   config = lib.mkIf config.kiyurica.desktop.niri.enable {

@@ -22,17 +22,8 @@
   };
 
   config = lib.mkIf config.kiyurica.desktop.niri.enable {
-    nixpkgs.overlays = [
-      (
-        final: prev:
-        let
-          unstable = import nixpkgs-unstable { system = prev.system; };
-        in
-        {
-          niri = unstable.niri;
-        }
-      )
-    ];
+    nixpkgs.overlays = [ niri.overlays.niri ];
+    programs.niri.package = pkgs.niri-unstable;
     home-manager.users.kiyurica = {
       imports = [
         niri.homeModules.niri
@@ -42,17 +33,8 @@
         ../home-manager/wayland.nix
         {
           config = {
-            nixpkgs.overlays = [
-              (
-                final: prev:
-                let
-                  unstable = import nixpkgs-unstable { system = prev.system; };
-                in
-                {
-                  niri = unstable.niri;
-                }
-              )
-            ];
+            nixpkgs.overlays = [ niri.overlays.niri ];
+            programs.niri.package = pkgs.niri-unstable;
             systemd.user.services.swaybg = {
               Unit = {
                 Description = "swaywm background";

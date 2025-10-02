@@ -151,11 +151,6 @@
       };
     };
 
-  config.home.packages = with pkgs; [
-    pavucontrol
-    swaylock
-  ];
-
   config.programs.waybar.settings.mainBar = {
     modules-left = [
       "sway/workspaces"

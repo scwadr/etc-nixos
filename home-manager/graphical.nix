@@ -288,5 +288,8 @@ in
         "${config.home.homeDirectory}/.nix-profile/share/applications/thunderbird.desktop"
       ];
     };
+    config.home.packages = with pkgs; [
+      pavucontrol
+    ];
   };
 }

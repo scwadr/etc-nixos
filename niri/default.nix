@@ -82,7 +82,6 @@
     };
 
     programs.niri.enable = true;
-    environment.etc."greetd/environments".text = "/run/current-system/sw/bin/niri";
     environment.systemPackages = with pkgs; [ pkgs.libsForQt5.qt5.qtwayland ];
     services.systemd-lock-handler.enable = true;
   };

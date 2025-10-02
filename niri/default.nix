@@ -42,6 +42,17 @@
         ../home-manager/wayland.nix
         {
           config = {
+            nixpkgs.overlays = [
+              (
+                final: prev:
+                let
+                  unstable = import nixpkgs-unstable { system = prev.system; };
+                in
+                {
+                  niri = unstable.niri;
+                }
+              )
+            ];
             systemd.user.services.swaybg = {
               Unit = {
                 Description = "swaywm background";

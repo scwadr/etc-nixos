@@ -100,7 +100,13 @@
   home-manager.users.kiyurica =
     { pkgs, ... }:
     {
-      programs.waybar.settings.mainBar.position = "right";
+      programs.waybar.settings.mainBar = {
+        position = "right";
+        "niri/window".rotate = 90;
+        "clock".rotate = 90;
+        "network".rotate = 90;
+        "mpris".rotate = 90;
+      };
       kiyurica.services.seekback.enable = true;
       kiyurica.services.log-window-titles.enable = true;
       kiyurica.icsUrlPath = config.age.secrets.icsUrlPath.path;

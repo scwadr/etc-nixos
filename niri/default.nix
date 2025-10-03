@@ -280,5 +280,6 @@
 
     environment.systemPackages = with pkgs; [ pkgs.libsForQt5.qt5.qtwayland ];
     services.systemd-lock-handler.enable = true;
+    programs.waybar.systemd.enable = false;
   };
 }

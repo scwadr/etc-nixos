@@ -97,7 +97,7 @@ in
         {
           mainBar = {
             layer = "top";
-            position = "bottom";
+            position = lib.mkDefault "bottom";
             height = 20;
             modules-right =
               (if cfg.icsUrlPath != null then [ "custom/next-event" ] else [ ])

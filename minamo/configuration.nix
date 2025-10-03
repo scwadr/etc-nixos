@@ -96,4 +96,20 @@
       workstation = true;
     };
   };
+
+  home-manager.users.kiyurica =
+    { pkgs, ... }:
+    {
+      programs.waybar.settings.mainBar.position = "right";
+      kiyurica.services.seekback.enable = true;
+      kiyurica.services.log-window-titles.enable = true;
+      kiyurica.icsUrlPath = config.age.secrets.icsUrlPath.path;
+    };
+
+  age.secrets.icsUrlPath = {
+    file = ../secrets/ics-url-path.txt.age;
+    owner = "kiyurica";
+    group = "kiyurica";
+    mode = "400";
+  };
 }

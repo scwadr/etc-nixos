@@ -22,6 +22,7 @@
   };
 
   config = lib.mkIf config.kiyurica.desktop.niri.enable {
+    programs.niri.enable = true; # required for display managers (so they can run niri-session)
     home-manager.users.kiyurica = {
       imports = [
         niri.homeModules.niri

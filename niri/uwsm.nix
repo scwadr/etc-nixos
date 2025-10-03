@@ -48,7 +48,7 @@
       enable = true;
       waylandCompositors.niri = {
         # becomes niri-uwsm.desktop
-        binPath = "niri-session";
+        binPath = "/run/current-system/sw/bin/niri-session";
         prettyName = "Niri";
         comment = "Niri-based session managed by UWSM";
       };

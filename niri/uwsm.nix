@@ -32,6 +32,7 @@
                 "--"
                 "firefox"
               ];
+              "Mod+Alt+Return".action.spawn = [ "uwsm-app" "--" "rnote" ];
               "Super+Alt+L".action.spawn = [ "swaylock" ];
             };
           };

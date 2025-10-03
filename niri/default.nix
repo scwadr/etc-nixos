@@ -262,6 +262,7 @@
                 };
                 window-rules = [
                   {
+                    matches = [ { app-id = "^foot$"; } ];
                     draw-border-with-background = false;
                   }
                   {

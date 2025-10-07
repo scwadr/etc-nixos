@@ -34,6 +34,7 @@
         ".thunderbird"
         ".config/syncthing"
         ".config/sayonara"
+        ".codex"
       ];
     };
   };

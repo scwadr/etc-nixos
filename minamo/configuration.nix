@@ -112,4 +112,6 @@
     group = "kiyurica";
     mode = "400";
   };
+
+  virtualisation.multipass.enable = true;
 }

@@ -34,8 +34,11 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [
+      vpl-gpu-rt
+    ];
   };
-  services.xserver.videoDrivers = [ "nvidia" "intel" ]; # enables nvidia support
+  services.xserver.videoDrivers = [ "nvidia" ]; # enables nvidia support
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;

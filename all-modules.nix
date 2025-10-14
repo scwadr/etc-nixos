@@ -17,5 +17,6 @@
     ./displaylink.nix
     ./eduroam
     ./synergy.nix
+    ./aiden.nix
   ];
 }

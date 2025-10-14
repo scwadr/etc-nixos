@@ -115,4 +115,5 @@
       networkmanager-openconnect # GT VPN
     ];
 
+  services.gnome.gnome-keyring.enable = true;
 }

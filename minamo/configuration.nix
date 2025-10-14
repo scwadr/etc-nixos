@@ -30,14 +30,10 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  boot.blacklistedKernelModules = [ "i915" ];
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      vpl-gpu-rt
-    ];
   };
   services.xserver.videoDrivers = [ "nvidia" ]; # enables nvidia support
   hardware.nvidia = {

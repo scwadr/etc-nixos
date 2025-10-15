@@ -14,6 +14,7 @@
     ./fonts.nix
     ./firefox.nix
     ./sayonara.nix
+    ./kicad.nix
   ];
 
   programs.git = {

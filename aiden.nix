@@ -14,7 +14,7 @@
       peers = [
         {
           publicKey = "hhJ4dU/k8MPZKDqDAa9Rbxs0RZL8DgMFM5d6POxFRyM=";
-          allowedIPs = [ "192.168.2.0/24" ];
+          allowedIPs = [ "192.168.49.0/24" ];
           endpoint = "128.61.105.57:39003";
           persistentKeepalive = 30;
           dynamicEndpointRefreshRestartSeconds = 10; # dns resolver (dnscrypt?) is flaky on mitsu8

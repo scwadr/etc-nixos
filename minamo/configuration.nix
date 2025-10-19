@@ -19,6 +19,7 @@
     ../vlc.nix
     ../adb.nix
     ../virt.nix
+    ../codex.nix
   ];
 
   boot.initrd.systemd.enable = true;

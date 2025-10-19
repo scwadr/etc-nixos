@@ -112,8 +112,6 @@
 
       nixfmt-rfc-style
 
-      codex
-
       zathura
       lyx # goated TeX editor
     ]

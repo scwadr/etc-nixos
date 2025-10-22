@@ -101,6 +101,8 @@
   home-manager.users.kiyurica =
     { ... }:
     {
+      imports = [ ../home-manager/safeeyes.nix ];
+
       kiyurica.services.seekback.enable = true;
       kiyurica.services.log-window-titles.enable = true;
       kiyurica.icsUrlPath = config.age.secrets.icsUrlPath.path;

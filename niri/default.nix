@@ -279,10 +279,9 @@
                       "Mod+Equal".action.set-column-width = "+10%";
                       "Mod+Shift+Minus".action.set-window-height = "-10%";
                       "Mod+Shift+Equal".action.set-window-height = "+10%";
-                      "Print".action = screenshot;
                       "Mod+Shift+E".action = quit;
                       "Mod+Shift+P".action = power-off-monitors;
-                      "Mod+Esc".action = toggle-keyboard-shortcuts-inhibit;
+                      "Mod+Escape".action = toggle-keyboard-shortcuts-inhibit;
                     }
                     // (builtins.foldl' (a: b: a // b) { } (
                       builtins.map (i: {

@@ -44,6 +44,9 @@
           }:
           {
             config = {
+              home.packages = [
+                pkgs.xwayland-satellite
+              ];
               systemd.user.services.swaybg = {
                 Unit = {
                   Description = "swaywm background";

@@ -78,14 +78,6 @@
         openconnect
         ocproxy
       ];
-      wants = [
-        "systemd-ask-password-console.path"
-        "systemd-ask-password-wall.path"
-      ];
-      after = [
-        "systemd-ask-password-console.path"
-        "systemd-ask-password-wall.path"
-      ];
       serviceConfig = {
         LoadCredentialEncrypted = "password:${config.kiyurica.gatech-vpn.password-file}";
         User = config.kiyurica.gatech-vpn.user;
@@ -95,7 +87,8 @@
         # 2nd line is 2nd factor authn - choices are pushN, phoneN, and a TOTP code
         export SECOND_FACTOR_PROMPT='Georgia Tech VPN: 2nd factor'
         export PASSWORD_FILE_PATH="$CREDENTIALS_DIRECTORY/password"
-        { cat "$PASSWORD_FILE_PATH"; systemd-ask-password "$SECOND_FACTOR_PROMPT"; } | \
+        export SECOND_FACTOR="$(systemd-ask-password "$SECOND_FACTOR_PROMPT")"
+        { cat "$PASSWORD_FILE_PATH"; echo "$SECOND_FACTOR"; } | \
         openconnect \
           --verbose \
           --protocol=gp \

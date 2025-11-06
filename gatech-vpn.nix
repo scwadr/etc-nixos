@@ -78,15 +78,22 @@
         openconnect
         ocproxy
       ];
+      confinement = {
+        enable = true;
+        packages = with pkgs; [
+          openconnect
+          ocproxy
+        ];
+      };
+      enableStrictShellChecks = true;
       serviceConfig = {
         LoadCredentialEncrypted = "password:${config.kiyurica.gatech-vpn.password-file}";
         User = config.kiyurica.gatech-vpn.user;
 
         CapabilityBoundingSet = "";
-        DevicePolicy = "strict";
         RestrictNamespaces = "yes";
         PrivateDevices = "true";
-        PrivateTmp = "true";
+        PrivateTmp = true;
         ProtectClock = "true";
         ProtectControlGroups = "true";
         ProtectHome = "true";

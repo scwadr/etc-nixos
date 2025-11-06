@@ -1,9 +1,10 @@
-{ lib
-, buildPythonPackage
-, fetchPypi
-, setuptools
-, wheel
-, numpy
+{
+  lib,
+  buildPythonPackage,
+  fetchPypi,
+  setuptools,
+  wheel,
+  numpy,
 }:
 
 buildPythonPackage rec {
@@ -15,7 +16,10 @@ buildPythonPackage rec {
     sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # replace with actual hash
   };
 
-  nativeBuildInputs = [ setuptools wheel ];
+  nativeBuildInputs = [
+    setuptools
+    wheel
+  ];
   propagatedBuildInputs = [ numpy ];
 
   # Optional: Vosk is pure Python but links to shared libs at runtime
@@ -31,4 +35,3 @@ buildPythonPackage rec {
     platforms = platforms.all;
   };
 }
-

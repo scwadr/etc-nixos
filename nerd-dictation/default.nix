@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   options.kiyurica.nerd-dictation.enable = lib.mkEnableOption "keyboard dictation";
 

@@ -1,17 +1,18 @@
-{ lib
-, fetchFromGitHub
-, python3Packages
-, wrapPythonProgram
-, xdotool
-, vosk   # assuming you package or import the vosk python library
-, pulseAudio  # for parec/pw-cat or similar
-, sox
-, ydotool
+{
+  lib,
+  fetchFromGitHub,
+  python3Packages,
+  wrapPythonProgram,
+  xdotool,
+  vosk, # assuming you package or import the vosk python library
+  pulseAudio, # for parec/pw-cat or similar
+  sox,
+  ydotool,
 }:
 
 python3Packages.buildPythonApplication rec {
   pname = "nerd-dictation";
-  version = "41f3727";  # set a tag or commit
+  version = "41f3727"; # set a tag or commit
 
   src = fetchFromGitHub {
     owner = "ideasman42";
@@ -49,8 +50,7 @@ python3Packages.buildPythonApplication rec {
     description = "Offline speech to text for desktop Linux using VOSK-API";
     homepage = "https://github.com/ideasman42/nerd-dictation";
     license = licenses.gpl3;
-    maintainers = []; 
+    maintainers = [ ];
     platforms = platforms.linux;
   };
 }
-

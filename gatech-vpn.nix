@@ -81,6 +81,9 @@
       serviceConfig = {
         LoadCredentialEncrypted = "password:${config.kiyurica.gatech-vpn.password-file}";
         User = config.kiyurica.gatech-vpn.user;
+        RestrictNamespaces = "yes";
+        PrivateTmp = "true";
+        ProtectSystem = "strict";
       };
       script = ''
         set -eu

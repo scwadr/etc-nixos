@@ -92,7 +92,18 @@
 
         CapabilityBoundingSet = "";
         RestrictNamespaces = "yes";
-        PrivateDevices = "true";
+        RestrictAddressFamilies = [
+          "AF_UNIX"
+          "AF_INET"
+          "AF_INET6"
+        ];
+        SystemCallFilter = [
+          "@system-service"
+          "@network-io"
+          "@pkey"
+          "@tls"
+        ];
+        # PrivateDevices = "true";
         PrivateTmp = true;
         ProtectClock = "true";
         ProtectControlGroups = "true";

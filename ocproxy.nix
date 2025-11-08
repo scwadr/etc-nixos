@@ -135,12 +135,12 @@
         kiyurica.service-status = [
           {
             serviceName = "ocproxy.service";
-            key = "GT";
+            key = "VPN";
             propertyName = "ActiveState";
             propertyValue = "active";
           }
         ];
-        programs.waybar.settings.mainBar."custom/GT" = {
+        programs.waybar.settings.mainBar."custom/VPN" = {
           on-click = "/run/current-system/sw/bin/systemctl start ocproxy.service";
           on-click-right = "/run/current-system/sw/bin/systemctl stop ocproxy.service";
         };

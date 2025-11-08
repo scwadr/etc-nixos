@@ -32,16 +32,6 @@ in
               default = "";
               description = "key to show in waybar";
             };
-            propertyName = lib.mkOption {
-              type = lib.types.str;
-              default = "Result";
-              description = "systemd property name to use";
-            };
-            propertyValue = lib.mkOption {
-              type = lib.types.str;
-              default = "success";
-              description = "systemd property value to set as success";
-            };
           };
         }
       )
@@ -246,6 +236,8 @@ in
               "custom/${cfg.key}" = genServiceStatus {
                 serviceName = cfg.serviceName;
                 key = cfg.key;
+                propertyName = cfg.propertyName;
+                propertyValue = cfg.propertyValue;
               };
             }) cfg.service-status
           ));

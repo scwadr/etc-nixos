@@ -32,6 +32,16 @@ in
               default = "";
               description = "key to show in waybar";
             };
+            propertyName = lib.mkOption {
+              type = lib.types.str;
+              default = "Result";
+              description = "systemd service property to compare";
+            };
+            propertyValue = lib.mkOption {
+              type = lib.types.str;
+              default = "success";
+              description = "systemd service property value where equal = success";
+            };
           };
         }
       )
@@ -40,8 +50,6 @@ in
       {
         serviceName = "nixos-upgrade.service";
         key = "u";
-        propertyName = "Result";
-        propertyValue = "success";
       }
     ];
     description = "show service status in waybar";

@@ -175,14 +175,5 @@
   users.users.kiyurica.extraGroups = [ "docker" ];
   virtualisation.docker.storageDriver = "btrfs";
 
-  age.secrets."gatech-vpn-password.cred" = {
-    file = ../secrets/gatech-vpn-password.cred.age;
-    owner = config.kiyurica.gatech-vpn.user;
-    mode = "400";
-  };
-  kiyurica.gatech-vpn = {
-    enable = true;
-    username = "kshibata6";
-    password-file = config.age.secrets."gatech-vpn-password.cred".path;
-  };
+  kiyurica.gatech-vpn.enable = true;
 }

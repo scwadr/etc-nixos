@@ -19,5 +19,6 @@
     ./aiden.nix
     ./nerd-dictation
     ./gatech-vpn.nix
+    ./ocproxy.nix
   ];
 }

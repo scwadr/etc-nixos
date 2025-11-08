@@ -1,148 +1,19 @@
+{ config, lib, ... }:
 {
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-{
-  imports = [ ./home-manager.nix ];
-
-  options.kiyurica.gatech-vpn.enable = lib.mkEnableOption "Georgia Tech (GlobalProtect) VPN via proxy";
-  options.kiyurica.gatech-vpn.user =
-    with lib;
-    with types;
-    mkOption {
-      description = "Linux user the VPN proxy will run as";
-      default = "gatech-vpn";
-      type = str;
-    };
-  options.kiyurica.gatech-vpn.group =
-    with lib;
-    with types;
-    mkOption {
-      description = "Linux group the VPN proxy will run as";
-      default = "gatech-vpn";
-      type = str;
-    };
-  options.kiyurica.gatech-vpn.server =
-    with lib;
-    with types;
-    mkOption {
-      description = "VPN server";
-      default = "vpn.gatech.edu";
-      type = str;
-    };
-  options.kiyurica.gatech-vpn.gateway =
-    with lib;
-    with types;
-    mkOption {
-      description = "gateway to use";
-      default = "DC Gateway";
-      example = "NI Gateway";
-      type = str;
-    };
-  options.kiyurica.gatech-vpn.username =
-    with lib;
-    with types;
-    mkOption {
-      description = "username for VPN";
-      example = "gburdell3";
-      type = str;
-    };
-  options.kiyurica.gatech-vpn.password-file =
-    with lib;
-    with types;
-    mkOption {
-      description = "path to file containing the password that is encrypted for systemd";
-      type = path;
-    };
-  options.kiyurica.gatech-vpn.socks-port =
-    with lib;
-    with types;
-    mkOption {
-      description = "run SOCKS5 proxy server on this port";
-      type = port;
-      default = 11080;
-    };
+  options.kiyurica.gatech-vpn.enable = lib.mkEnableOption "Georgia Tech VPN via proxy";
 
   config = lib.mkIf config.kiyurica.gatech-vpn.enable {
-    users.groups.${config.kiyurica.gatech-vpn.group} = { };
-    users.users.${config.kiyurica.gatech-vpn.user} = {
-      isSystemUser = true;
-      description = "Georgia Tech VPN";
-      group = config.kiyurica.gatech-vpn.group;
+    age.secrets."gatech-vpn-password.cred" = {
+      file = ./secrets/gatech-vpn-password-${config.networking.hostName}.cred.age;
+      owner = config.kiyurica.ocproxy.user;
+      mode = "400";
     };
-    systemd.services.gatech-vpn = {
-      description = "Georgia Tech VPN";
-      path = with pkgs; [
-        openconnect
-        ocproxy
-      ];
-      enableStrictShellChecks = true;
-      serviceConfig = {
-        LoadCredentialEncrypted = "password:${config.kiyurica.gatech-vpn.password-file}";
-        User = config.kiyurica.gatech-vpn.user;
-
-        CapabilityBoundingSet = "";
-        LockPersonality = "true";
-        MemoryDenyWriteExecute = "yes";
-        NoNewPrivileges = "true";
-        PrivateDevices = "true";
-        PrivateTmp = true;
-        ProtectClock = "true";
-        ProtectControlGroups = "true";
-        ProtectHome = "true";
-        ProtectHostname = "true";
-        ProtectKernelLogs = "true";
-        ProtectKernelModules = "true";
-        ProtectKernelTunables = "true";
-        ProtectProc = "invisible";
-        ProtectSystem = "strict";
-        ProtectUsers = "true";
-        RemoveIPC = "true";
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
-        RestrictNamespaces = "yes";
-        RestrictRealtime = "true";
-        RestrictSUIDSGID = "true";
-        SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-          "~@resources"
-        ];
-      };
-      script = ''
-        set -eu
-
-        export PASSWORD_FILE_PATH="$CREDENTIALS_DIRECTORY/password"
-        { cat "$PASSWORD_FILE_PATH"; echo 'push1'; } | \
-        openconnect \
-          --verbose \
-          --protocol=gp \
-          --user='${config.kiyurica.gatech-vpn.username}' \
-          --authgroup='${config.kiyurica.gatech-vpn.gateway}' \
-          --script-tun --script 'ocproxy -D ${builtins.toString config.kiyurica.gatech-vpn.socks-port}' \
-          '${config.kiyurica.gatech-vpn.server}'
-      '';
+    kiyurica.ocproxy = {
+      enable = true;
+      server = "vpn.gatech.edu";
+      gateway = "DC Gateway";
+      username = "kshibata6";
+      password-file = config.age.secrets."gatech-vpn-password.cred".path;
     };
-    home-manager.users.kiyurica =
-      { config, pkgs, ... }:
-      {
-        kiyurica.service-status = [
-          {
-            serviceName = "gatech-vpn.service";
-            key = "GT";
-            propertyName = "ActiveState";
-            propertyValue = "active";
-          }
-        ];
-        programs.waybar.settings.mainBar."custom/GT" = {
-          on-click = "/run/current-system/sw/bin/systemctl start gatech-vpn.service";
-          on-click-right = "/run/current-system/sw/bin/systemctl stop gatech-vpn.service";
-        };
-      };
   };
 }

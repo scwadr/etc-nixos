@@ -52,7 +52,11 @@
     with lib;
     with types;
     mkOption {
-      description = "path to file containing the password that is encrypted for systemd";
+      description = ''
+        path to file containing the password that is encrypted for systemd
+
+        For example, use `run0 systemd-creds enrcypt --name=password password.txt password.cred` to generate the file.
+      '';
       type = path;
     };
   options.kiyurica.ocproxy.socks-port =

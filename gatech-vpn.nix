@@ -83,29 +83,36 @@
         LoadCredentialEncrypted = "password:${config.kiyurica.gatech-vpn.password-file}";
         User = config.kiyurica.gatech-vpn.user;
 
-        # CapabilityBoundingSet = "";
-        # RestrictNamespaces = "yes";
-        # RestrictAddressFamilies = [
-        #   "AF_UNIX"
-        #   "AF_INET"
-        #   "AF_INET6"
-        # ];
-        # SystemCallFilter = [
-        #   "@system-service"
-        # ];
-        # PrivateDevices = "true";
-        # PrivateTmp = true;
-        # ProtectClock = "true";
-        # ProtectControlGroups = "true";
+        CapabilityBoundingSet = "";
+        LockPersonality = "true";
+        MemoryDenyWriteExecute = "yes";
+        NoNewPrivileges = "true";
+        PrivateDevices = "true";
+        PrivateTmp = true;
+        ProtectClock = "true";
+        ProtectControlGroups = "true";
         ProtectHome = "true";
         ProtectHostname = "true";
         ProtectKernelLogs = "true";
         ProtectKernelModules = "true";
         ProtectKernelTunables = "true";
         ProtectProc = "invisible";
-        # ProtectSystem = "strict";
+        ProtectSystem = "strict";
+        ProtectUsers = "true";
         RemoveIPC = "true";
-        NoNewPrivileges = "true";
+        RestrictAddressFamilies = [
+          "AF_INET"
+          "AF_INET6"
+        ];
+        RestrictNamespaces = "yes";
+        RestrictRealtime = "true";
+        RestrictSUIDSGID = "true";
+        SystemCallArchitectures = "native";
+        SystemCallFilter = [
+          "@system-service"
+          "~@privileged"
+          "~@resources"
+        ];
       };
       script = ''
         set -eu

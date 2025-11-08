@@ -127,7 +127,20 @@
           --script-tun --script 'ocproxy -D ${builtins.toString config.kiyurica.gatech-vpn.socks-port}' \
           '${config.kiyurica.gatech-vpn.server}'
       '';
-      wantedBy = [ "multi-user.target" ];
     };
+    home-manager.users.kiyurica =
+      { config, pkgs, ... }:
+      {
+        kiyurica.service-status = [
+          {
+            serviceName = "gatech-vpn.service";
+            key = "GT";
+          }
+        ];
+        programs.waybar.settings.mainBar.modules-right."custom/GT" = {
+          on-click = "/run/current-system/sw/bin/systemctl start gatech-vpn.service";
+          on-click-right = "/run/current-system/sw/bin/systemctl stop gatech-vpn.service";
+        };
+      };
   };
 }

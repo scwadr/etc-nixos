@@ -3,6 +3,8 @@
   ...
 }:
 {
+  import = [ ./home-manager.nix ];
+
   age.secrets.codex-auth = {
     file = ./secrets/codex-auth.json.age;
     owner = "kiyurica";
@@ -12,13 +14,13 @@
 
   home-manager.users.kiyurica =
     let
-      systemConfig = config;
+      systemconfig = config;
     in
     { config, pkgs, ... }:
     {
       home.packages = [ pkgs.codex ];
       home.file.".codex/auth.json" = {
-        source = config.lib.file.mkOutOfStoreSymlink systemConfig.age.secrets.codex-auth.path;
+        source = config.lib.file.mkoutofstoresymlink systemconfig.age.secrets.codex-auth.path;
       };
     };
 }

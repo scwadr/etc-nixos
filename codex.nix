@@ -3,7 +3,7 @@
   ...
 }:
 {
-  import = [ ./home-manager.nix ];
+  imports = [ ./home-manager.nix ];
 
   age.secrets.codex-auth = {
     file = ./secrets/codex-auth.json.age;

@@ -55,6 +55,7 @@
     acpi
     file
     picocom
+    shpool
   ];
 
   fonts.packages = with pkgs; [

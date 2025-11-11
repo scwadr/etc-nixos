@@ -110,6 +110,11 @@
     openFirewall = true;
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      ollama = specialArgs.nixpkgs-unstable.legacyPackages.${prev.system}.ollama;
+    })
+  ];
   services.ollama = {
     enable = true;
     loadModels = [

@@ -1,6 +1,22 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.kiyurica.gatech-vpn.enable = lib.mkEnableOption "Georgia Tech VPN via proxy";
+
+  options.kiyurica.gatech-vpn.sshProxyHosts =
+    with lib;
+    with types;
+    mkOption {
+      description = "Host patterns for SSH that should use the VPN SOCKS proxy";
+      type = listOf str;
+      default = [
+        "login-phoenix.pace.gatech.edu"
+      ];
+    };
 
   config = lib.mkIf config.kiyurica.gatech-vpn.enable {
     age.secrets."gatech-vpn-password.cred" = {
@@ -14,6 +30,20 @@
       gateway = "DC Gateway";
       username = "kshibata6";
       password-file = config.age.secrets."gatech-vpn-password.cred".path;
+    };
+
+    home-manager.users.kiyurica.programs.ssh = {
+      enable = true;
+      matchBlocks = builtins.listToAttrs (
+        map (h: {
+          name = h;
+          value = {
+            extraOptions = {
+              ProxyCommand = "nc -X 5 -x 127.0.0.1:${builtins.toString config.kiyurica.ocproxy.socks-port} %h %p";
+            };
+          };
+        }) config.kiyurica.gatech-vpn.sshProxyHosts
+      );
     };
   };
 }

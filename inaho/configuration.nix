@@ -90,40 +90,12 @@
   kiyurica.tailscale.enable = true;
   kiyurica.tailscale.cert.enable = true;
 
-  # provide access to inaba for misaki
-  services.nfs.server.enable = true;
-  services.nfs.server.exports = ''
-    /inaba  192.168.2.201(rw,no_subtree_check)
-  '';
   networking.firewall.allowedTCPPorts = [ 2049 ];
 
   kiyurica.remote-builder.enable = true;
 
-  services.minecraft-server = {
-    enable = true;
-    eula = true;
-    declarative = true;
-    serverProperties = {
-      server-port = 25565;
-      online-mode = false; # needed for clients w/o Mojang account
-    };
-    openFirewall = true;
-  };
-
   kiyurica.ollama.enableServer = true;
 
-  services.keycloak = {
-    enable = true;
-    settings.hostname = "inaho.tailcbbed9.ts.net";
-    settings.http-port = 6019;
-    settings.http-host = "127.0.0.1";
-    settings.http-enabled = true; # disables HTTPS
-    database.passwordFile = config.age.secrets.keycloak-db-password.path;
-    database.type = "mariadb";
-  };
-  age.secrets.keycloak-db-password = {
-    file = ../secrets/inaho-keycloak-db-password.txt.age;
-    owner = config.services.mysql.user;
-    mode = "400";
-  };
+  programs.singularity.enable = true;
+  programs.singularity.package = pkgs.apptainer;
 }

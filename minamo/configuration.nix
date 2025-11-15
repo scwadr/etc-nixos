@@ -81,7 +81,7 @@
 
   kiyurica.synergy = {
     enable = true;
-    role = "client";
+    role = "server";
     serverAddress = "suzaku.local";
     screenName = "minamo";
   };

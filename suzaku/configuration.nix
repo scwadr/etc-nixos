@@ -146,7 +146,7 @@
 
   kiyurica.synergy = {
     enable = true;
-    role = "server";
+    role = "client";
     screenName = "suzaku";
   };
 

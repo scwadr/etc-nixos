@@ -76,17 +76,6 @@
           }
         ];
       };
-      nixosConfigurations.yagoto = nixpkgs.lib.nixosSystem rec {
-        system = "aarch64-linux";
-        specialArgs = attrs // {
-          inherit system;
-        };
-        modules = [
-          ./yagoto/configuration.nix
-          agenix.nixosModules.default
-        ];
-      };
-      images.yagoto = nixosConfigurations.yagoto.config.system.build.sdImage;
       nixosConfigurations.suzaku = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         specialArgs = attrs // {

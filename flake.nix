@@ -87,13 +87,6 @@
         ];
       };
       images.yagoto = nixosConfigurations.yagoto.config.system.build.sdImage;
-      nixosConfigurations.sekisho2 = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = attrs // {
-          inherit system;
-        };
-        modules = [ ./sekisho2/configuration.nix ];
-      };
       nixosConfigurations.suzaku = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         specialArgs = attrs // {

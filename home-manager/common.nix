@@ -21,6 +21,7 @@
     enable = true;
     userName = "Ken Shibata";
     userEmail = "ken.shibata+git@kiyuri.ca";
+    lfs.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
       url."ssh://git@github.com".insteadOf = "https://github.com";

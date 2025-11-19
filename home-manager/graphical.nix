@@ -126,24 +126,37 @@ in
               propertyValue,
             }:
             let
-              script = pkgs.writeShellScriptBin "get-last-active-time.sh" ''
-                export LOAD_ERROR="$(systemctl show ${serviceName} --property=LoadError | ${pkgs.coreutils}/bin/cut -d= -f2)"
-                if [[ 0 != "$(echo -n "$LOAD_ERROR" | ${pkgs.coreutils}/bin/wc -w)" ]]; then
-                  printf '{"text": "✕", "tooltip": %s, "class": "load-error"}' "$(echo -n "${serviceName}: $LOAD_ERROR" | ${pkgs.jq}/bin/jq -Rsa .)"
-                fi
-                export RESULT="$(systemctl show ${serviceName} --property=${propertyName} | ${pkgs.coreutils}/bin/cut -d= -f2)"
-                export DATE="$(${pkgs.coreutils}/bin/date -d "$(systemctl show ${serviceName} --property=ActiveExitTimestamp | ${pkgs.coreutils}/bin/cut -d= -f2)" +'%m-%d %H')"
-                if [[ "$RESULT" == "${propertyValue}" ]]; then
-                  printf '{"text": "○${key}", "tooltip": "${serviceName} %s", "class": "success"}' "$DATE"
-                else
-                  printf '{"text": "△${key}", "tooltip": "${serviceName} %s: %s", "class": "%s"}' "$DATE" "$RESULT" "$RESULT"
-                fi
+              escapedServiceName = builtins.replaceStrings [ "." "-" ] [ "_2e" "_2d" ] serviceName;
+              script = pkgs.writeShellScriptBin "monitor-service-status.sh" ''
+                get_status() {
+                  export LOAD_ERROR="$(systemctl show ${serviceName} --property=LoadError | ${pkgs.coreutils}/bin/cut -d= -f2)"
+                  if [[ 0 != "$(echo -n "$LOAD_ERROR" | ${pkgs.coreutils}/bin/wc -w)" ]]; then
+                    printf '{"text": "✕", "tooltip": %s, "class": "load-error"}' "$(echo -n "${serviceName}: $LOAD_ERROR" | ${pkgs.jq}/bin/jq -Rsa .)"
+                    return
+                  fi
+                  export RESULT="$(systemctl show ${serviceName} --property=${propertyName} | ${pkgs.coreutils}/bin/cut -d= -f2)"
+                  export DATE="$(${pkgs.coreutils}/bin/date -d "$(systemctl show ${serviceName} --property=ActiveExitTimestamp | ${pkgs.coreutils}/bin/cut -d= -f2)" +'%m-%d %H')"
+                  if [[ "$RESULT" == "${propertyValue}" ]]; then
+                    printf '{"text": "○${key}", "tooltip": "${serviceName} %s", "class": "success"}' "$DATE"
+                  else
+                    printf '{"text": "△${key}", "tooltip": "${serviceName} %s: %s", "class": "%s"}' "$DATE" "$RESULT" "$RESULT"
+                  fi
+                }
+
+                # Print initial status
+                get_status
+
+                # Monitor for changes
+                ${pkgs.systemd}/bin/busctl monitor \
+                  --match "type='signal',sender='org.freedesktop.systemd1',path='/org/freedesktop/systemd1/unit/${escapedServiceName}',interface='org.freedesktop.DBus.Properties',member='PropertiesChanged'" \
+                  | while read -r line; do
+                    get_status
+                  done
               '';
             in
             {
-              exec = "${script}/bin/get-last-active-time.sh";
+              exec = "${script}/bin/monitor-service-status.sh";
               return-type = "json";
-              interval = 60;
               rotate = rotationAngle;
             };
           isVertical = cfg.waybarPosition == "left" || cfg.waybarPosition == "right";

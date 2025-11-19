@@ -13,6 +13,7 @@
     ./doas.nix
     ./man.nix
     ./home-manager.nix
+    ./dbus-monitor.nix
   ];
 
   # This value determines the NixOS release from which the default

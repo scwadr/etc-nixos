@@ -1,5 +1,7 @@
 # NixOS configuration
 
+![screenshot of the desktop with a Firefox window displaying this GitHub, and a taskbar to the right](./screenshot.png)
+
 ## mitsu8 / living room TV PC
 
 Main configuration file is `mitsu8/configuration.nix`, and

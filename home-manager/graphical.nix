@@ -122,9 +122,9 @@ in
                   export RESULT="$(systemctl show ${serviceName} --property=${propertyName} | ${pkgs.coreutils}/bin/cut -d= -f2)"
                   export DATE="$(${pkgs.coreutils}/bin/date -d "$(systemctl show ${serviceName} --property=ActiveExitTimestamp | ${pkgs.coreutils}/bin/cut -d= -f2)" +'%m-%d %H')"
                   if [[ "$RESULT" == "${propertyValue}" ]]; then
-                    printf '{"text": "○${key}", "tooltip": "${serviceName} %s", "class": "success"}' "$DATE"
+                    printf '{"text": "○${key}", "tooltip": "${serviceName} %s", "class": "success"}\n' "$DATE"
                   else
-                    printf '{"text": "△${key}", "tooltip": "${serviceName} %s: %s", "class": "%s"}' "$DATE" "$RESULT" "$RESULT"
+                    printf '{"text": "△${key}", "tooltip": "${serviceName} %s: %s", "class": "%s"}\n' "$DATE" "$RESULT" "$RESULT"
                   fi
                 }
 

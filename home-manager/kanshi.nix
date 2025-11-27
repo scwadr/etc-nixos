@@ -64,6 +64,19 @@
             ];
           }
           {
+            profile.name = "eastyork-dock2";
+            profile.outputs = [
+              {
+                criteria = "$Sony";
+                position = "0,0";
+              }
+              {
+                criteria = "${builtinDisplay}";
+                position = "0,1440";
+              }
+            ];
+          }
+          {
             profile.name = "eastyork-dock-closed";
             profile.outputs = [
               {
@@ -73,6 +86,15 @@
               {
                 criteria = "$Sony";
                 position = "900,160";
+              }
+            ];
+          }
+          {
+            profile.name = "eastyork-dock2-closed";
+            profile.outputs = [
+              {
+                criteria = "$Sony";
+                position = "0,0";
               }
             ];
           }

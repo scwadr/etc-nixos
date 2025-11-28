@@ -57,7 +57,7 @@
     file
     picocom
     shpool
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
   ];
 
   programs.dconf.enable = true;

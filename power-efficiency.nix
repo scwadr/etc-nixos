@@ -41,24 +41,26 @@ let
   acPowerScript = pkgs.writeShellScript "ac-power" ''
     ${config.boot.kernelPackages.x86_energy_perf_policy}/bin/x86_energy_perf_policy performance
 
-    # Re-enable all P-cores when on AC power
-    if [ -f /sys/devices/cpu_core/cpus ]; then
-      pcores=$(cat /sys/devices/cpu_core/cpus)
-      # Parse CPU list (format: 0-7 or 0,2,4,6 or combination)
-      echo "$pcores" | tr ',' '\n' | while read -r range; do
-        if echo "$range" | grep -q '-'; then
-          start=$(echo "$range" | cut -d'-' -f1)
-          end=$(echo "$range" | cut -d'-' -f2)
-          for cpu_num in $(seq "$start" "$end"); do
-            [ -f "/sys/devices/system/cpu/cpu$cpu_num/online" ] && \
-              echo 1 > "/sys/devices/system/cpu/cpu$cpu_num/online" 2>/dev/null || true
-          done
-        else
-          [ -f "/sys/devices/system/cpu/cpu$range/online" ] && \
-            echo 1 > "/sys/devices/system/cpu/cpu$range/online" 2>/dev/null || true
-        fi
-      done
-    fi
+    # Re-enable all cores (both P-cores and E-cores) when on AC power
+    for cpu_type_dir in /sys/devices/cpu_core /sys/devices/cpu_atom; do
+      if [ -f "$cpu_type_dir/cpus" ]; then
+        cores=$(cat "$cpu_type_dir/cpus")
+        # Parse CPU list (format: 0-7 or 0,2,4,6 or combination)
+        echo "$cores" | tr ',' '\n' | while read -r range; do
+          if echo "$range" | grep -q '-'; then
+            start=$(echo "$range" | cut -d'-' -f1)
+            end=$(echo "$range" | cut -d'-' -f2)
+            for cpu_num in $(seq "$start" "$end"); do
+              [ -f "/sys/devices/system/cpu/cpu$cpu_num/online" ] && \
+                echo 1 > "/sys/devices/system/cpu/cpu$cpu_num/online" 2>/dev/null || true
+            done
+          else
+            [ -f "/sys/devices/system/cpu/cpu$range/online" ] && \
+              echo 1 > "/sys/devices/system/cpu/cpu$range/online" 2>/dev/null || true
+          fi
+        done
+      fi
+    done
   '';
 
 in

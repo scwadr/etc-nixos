@@ -19,6 +19,7 @@
     specialArgs.disko.nixosModules.disko
     ./backup.nix
     ./minio.nix
+    ./webdav.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

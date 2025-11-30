@@ -13,18 +13,52 @@ let
 
   # Script to apply power saving settings when on battery
   batteryPowerScript = pkgs.writeShellScript "battery-power" ''
-    ${config.boot.kernelPackages.x86_energy_perf_policy}/bin/x86_energy_perf_policy powersave
-    echo powersave > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-    echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo
-    echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
+    ${config.boot.kernelPackages.x86_energy_perf_policy}/bin/x86_energy_perf_policy power
+
+    # Disable P-cores (performance cores) on battery
+    if [ -f /sys/devices/cpu_core/cpus ]; then
+      pcores=$(cat /sys/devices/cpu_core/cpus)
+      # Parse CPU list (format: 0-7 or 0,2,4,6 or combination)
+      echo "$pcores" | tr ',' '\n' | while read -r range; do
+        if echo "$range" | grep -q '-'; then
+          start=$(echo "$range" | cut -d'-' -f1)
+          end=$(echo "$range" | cut -d'-' -f2)
+          for cpu_num in $(seq "$start" "$end"); do
+            [ "$cpu_num" = "0" ] && continue  # Keep CPU0 online
+            [ -f "/sys/devices/system/cpu/cpu$cpu_num/online" ] && \
+              echo 0 > "/sys/devices/system/cpu/cpu$cpu_num/online" 2>/dev/null || true
+          done
+        else
+          [ "$range" = "0" ] && continue  # Keep CPU0 online
+          [ -f "/sys/devices/system/cpu/cpu$range/online" ] && \
+            echo 0 > "/sys/devices/system/cpu/cpu$range/online" 2>/dev/null || true
+        fi
+      done
+    fi
   '';
 
   # Script to apply performance settings when on AC power
   acPowerScript = pkgs.writeShellScript "ac-power" ''
     ${config.boot.kernelPackages.x86_energy_perf_policy}/bin/x86_energy_perf_policy performance
-    echo performance > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-    echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo
-    echo 500 > /proc/sys/vm/dirty_writeback_centisecs
+
+    # Re-enable all P-cores when on AC power
+    if [ -f /sys/devices/cpu_core/cpus ]; then
+      pcores=$(cat /sys/devices/cpu_core/cpus)
+      # Parse CPU list (format: 0-7 or 0,2,4,6 or combination)
+      echo "$pcores" | tr ',' '\n' | while read -r range; do
+        if echo "$range" | grep -q '-'; then
+          start=$(echo "$range" | cut -d'-' -f1)
+          end=$(echo "$range" | cut -d'-' -f2)
+          for cpu_num in $(seq "$start" "$end"); do
+            [ -f "/sys/devices/system/cpu/cpu$cpu_num/online" ] && \
+              echo 1 > "/sys/devices/system/cpu/cpu$cpu_num/online" 2>/dev/null || true
+          done
+        else
+          [ -f "/sys/devices/system/cpu/cpu$range/online" ] && \
+            echo 1 > "/sys/devices/system/cpu/cpu$range/online" 2>/dev/null || true
+        fi
+      done
+    fi
   '';
 
 in

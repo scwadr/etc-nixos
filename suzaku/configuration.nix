@@ -144,12 +144,6 @@
   # NOTE: disable for now, as x86_64 builders end up slowing down builds that should have otherwise run locally
   # kiyurica.remote-builder.use-remote-builder = true;
 
-  kiyurica.synergy = {
-    enable = true;
-    role = "client";
-    screenName = "suzaku";
-  };
-
   # Enable mDNS for LAN hostname resolution
   services.avahi = {
     enable = true;

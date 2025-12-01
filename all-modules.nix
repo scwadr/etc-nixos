@@ -15,7 +15,6 @@
     ./power-efficiency.nix
     ./displaylink.nix
     ./eduroam
-    ./synergy.nix
     ./aiden.nix
     ./nerd-dictation
     ./gatech-vpn.nix

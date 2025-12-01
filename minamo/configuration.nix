@@ -119,8 +119,6 @@
     mode = "400";
   };
 
-  virtualisation.multipass.enable = true;
-
   kiyurica.networks.aiden = {
     enable = true;
     address = "192.168.2.100/32";

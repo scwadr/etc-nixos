@@ -81,6 +81,8 @@
   };
   home-manager.extraSpecialArgs = specialArgs;
 
+  programs.fish.enable = true;
+
   users.groups.kiyurica = { };
   users.users.kiyurica = {
     isNormalUser = true;

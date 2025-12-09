@@ -19,8 +19,8 @@
     seekback.inputs.flake-utils.follows = "flake-utils";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
-    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.3";
+    # lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     polar-data-collector.url = "github:VR-state-analysis/polar-data-collector";
     polar-data-collector.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";

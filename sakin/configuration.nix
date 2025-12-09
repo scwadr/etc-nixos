@@ -65,19 +65,4 @@
       workstation = true;
     };
   };
-
-  home-manager.users.kiyurica =
-    { lib, ... }:
-    {
-      kiyurica.services.seekback.enable = true;
-      kiyurica.services.log-window-titles.enable = true;
-      kiyurica.icsUrlPath = config.age.secrets.icsUrlPath.path;
-      kiyurica.waybarPosition = "right";
-      programs.waybar.style = ''
-        window#waybar {
-          background-color: rgba(0, 0, 0, 1);
-        }
-      '';
-      programs.niri.settings.layout.default-column-width.proportion = lib.mkForce 0.3;
-    };
 }

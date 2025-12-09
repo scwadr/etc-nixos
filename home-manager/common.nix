@@ -190,4 +190,5 @@
       "flathub:app/io.github.dzheremi2.lrcmake-gtk//stable"
     ];
   };
+  programs.ssh.enableDefaultConfig = false;
 }

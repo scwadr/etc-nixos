@@ -27,8 +27,7 @@
     programs.niri = {
       # required for display managers (so they can run niri-session)
       enable = true;
-      # package = niri.packages.${pkgs.system}.niri-stable;
-      package = (import nixpkgs-unstable { inherit (pkgs) system; }).niri;
+      package = niri.packages.${pkgs.system}.niri-stable;
     };
     home-manager.users.kiyurica = {
       imports = [

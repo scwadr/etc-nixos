@@ -92,7 +92,6 @@
       poppler-utils
       meld
       age
-      rnote
 
       libsixel # for img2sixel for images in terminal
 

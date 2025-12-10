@@ -116,7 +116,6 @@
       joplin-desktop
     ]
     ++ (with pkgs.kdePackages; [
-      ark
       gwenview
       kate
     ])

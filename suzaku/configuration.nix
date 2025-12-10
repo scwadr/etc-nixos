@@ -186,6 +186,7 @@
       "flathub:app/org.mozilla.Thunderbird//stable"
       "flathub:app/io.github.alainm23.planify//stable"
       "flathub:app/com.github.flxzt.rnote//stable"
+      "flathub:app/org.kde.ark//stable"
     ];
   };
 

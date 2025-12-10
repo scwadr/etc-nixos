@@ -21,7 +21,7 @@ in
       Service = {
         ExecStart =
           "${pkgs.coreutils-full}/bin/env GOMAXPROCS=1 ${
-            specialArgs.seekback.packages.${pkgs.system}.default
+            specialArgs.seekback.packages.${pkgs.stdenv.hostPlatform.system}.default
           }/bin/seekback"
           + " -buffer-size 500000"
           + " -name '/home/kiyurica/inaba/seekback/%%s.aiff'"

@@ -48,7 +48,7 @@ in
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           ExecStart = "${pkgs.writeShellScriptBin "reimu-proxy.sh" ''
-            ${touhoukou.packages.${pkgs.system}.udp2raw}/bin/udp2raw \
+            ${touhoukou.packages.${pkgs.stdenv.hostPlatform.system}.udp2raw}/bin/udp2raw \
               -c -l${cfg.udp2raw.addr} -r34.146.10.200:443 \
               -k "$(cat /etc/nixos/reimu-udp2raw-key)" \
               --raw-mode faketcp -a

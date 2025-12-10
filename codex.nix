@@ -13,7 +13,7 @@
     (final: prev: {
       github-copilot-cli =
         (import specialArgs.nixpkgs-unstable {
-          inherit (prev) system;
+          system = prev.stdenv.hostPlatform.system;
           config.allowUnfree = true;
         }).github-copilot-cli;
     })
@@ -30,7 +30,7 @@
     {
       nixpkgs.overlays = [
         (final: prev: {
-          codex = specialArgs.nixpkgs-unstable.legacyPackages.${prev.system}.codex;
+          codex = specialArgs.nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system}.codex;
         })
       ];
       home.packages = with pkgs; [

@@ -10,7 +10,7 @@
   config = lib.mkIf config.kiyurica.ollama.enableServer {
     nixpkgs.overlays = [
       (final: prev: {
-        ollama = specialArgs.nixpkgs-unstable.legacyPackages.${prev.system}.ollama;
+        ollama = specialArgs.nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system}.ollama;
       })
     ];
     services.ollama = {

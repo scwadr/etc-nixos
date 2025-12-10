@@ -16,7 +16,8 @@
       nixpkgs.config.allowUnfree = true;
       nixpkgs.overlays = [
         (final: prev: {
-          python310Packages = specialArgs.nixpkgs-unstable.legacyPackages.${prev.system}.python310Packages;
+          python310Packages =
+            specialArgs.nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system}.python310Packages;
         })
       ];
     };

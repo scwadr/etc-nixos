@@ -3,7 +3,7 @@ let
   swayOverlay =
     final: prev:
     let
-      unstable = import nixpkgs-unstable { system = prev.system; };
+      unstable = import nixpkgs-unstable { system = prev.stdenv.hostPlatform.system; };
     in
     {
       sway = unstable.sway;

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -19,28 +20,18 @@
             ];
             binds = {
               "Mod+Return".action.spawn = [
-                "uwsm-app"
-                "--"
                 "foot"
               ];
               "Mod+D".action.spawn = [
                 "fuzzel"
-                "--launch-prefix=uwsm-app --"
               ];
               "Mod+Shift+Return".action.spawn = [
-                "uwsm-app"
-                "--"
-                "firefox"
-              ];
-              "Mod+Alt+Shift+Return".action.spawn = [
-                "uwsm-app"
-                "--"
-                "chromium"
+                "${pkgs.gtk3}/bin/gtk-launch"
+                "org.mozilla.firefox"
               ];
               "Mod+Alt+Return".action.spawn = [
-                "uwsm-app"
-                "--"
-                "rnote"
+                "${pkgs.gtk3}/bin/gtk-launch"
+                "com.github.flxzt.rnote"
               ];
               "Mod+Alt+L".action.spawn = [ "swaylock" ];
             };

@@ -8,8 +8,6 @@
     ./tailscale-cert.nix
     ./autoUpgrade-git.nix
     ./reimu2.nix
-    ./remote-builder.nix
-    ./use-remote-builder.nix
     ./kdeconnect.nix
     ./laptop.nix
     ./power-efficiency.nix

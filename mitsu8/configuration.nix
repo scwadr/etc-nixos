@@ -157,7 +157,5 @@
 
   kiyurica.tailscale.enable = true;
 
-  kiyurica.remote-builder.enable = true;
-
   kiyurica.kdeconnect.enable = true;
 }

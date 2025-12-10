@@ -117,6 +117,4 @@
       "noatime"
     ];
   };
-
-  kiyurica.remote-builder.use-remote-builder = true;
 }

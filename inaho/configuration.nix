@@ -93,8 +93,6 @@
   kiyurica.tailscale.enable = true;
   kiyurica.tailscale.cert.enable = true;
 
-  kiyurica.remote-builder.enable = true;
-
   kiyurica.ollama.enableServer = true;
 
   programs.singularity.enable = true;

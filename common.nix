@@ -14,6 +14,7 @@
     ./man.nix
     ./home-manager.nix
     ./dbus-monitor.nix
+    ./fwupd.nix
   ];
 
   kiyurica.home-manager.enable = true;
@@ -121,6 +122,4 @@
   networking.networkmanager.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
-
-  services.fwupd.enable = true;
 }

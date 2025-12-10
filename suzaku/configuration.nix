@@ -182,4 +182,8 @@
       "flathub:app/org.mozilla.firefox//stable"
     ];
   };
+
+  system.activationScripts.flatpakPermissions = ''
+    ${pkgs.coreutils}/bin/chmod o+X /var/lib/flatpak
+  '';
 }

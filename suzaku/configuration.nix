@@ -194,7 +194,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "/run/current-system/sw/bin/chmod o+rX ${config.services.flatpak.dataDir}";
+      ExecStart = "/run/current-system/sw/bin/chmod o+rX /var/lib/flatpak";
       RemainAfterExit = true;
     };
   };

@@ -104,7 +104,6 @@
       calc
 
       freerdp
-      thunderbird
 
       nixfmt-rfc-style
 

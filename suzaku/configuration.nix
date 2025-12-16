@@ -188,7 +188,10 @@
       "flathub:app/org.kde.ark//stable"
     ];
     overrides."global" = {
-      Context.sockets = [ "!fallback-x11" "!x11" ];
+      Context.sockets = [
+        "!fallback-x11"
+        "!x11"
+      ];
       Context.filesystems = [
         "!host"
         "!host-etc"
@@ -203,8 +206,14 @@
 
   systemd.services.flatpak-permissions = {
     description = "Set permissions on /var/lib/flatpak";
-    wants = [ "manage-flatpaks-auto.service" "manage-flatpaks-activation.service" ];
-    after = [ "manage-flatpaks-auto.service" "manage-flatpaks-activation.service" ];
+    wants = [
+      "manage-flatpaks-auto.service"
+      "manage-flatpaks-activation.service"
+    ];
+    after = [
+      "manage-flatpaks-auto.service"
+      "manage-flatpaks-activation.service"
+    ];
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";

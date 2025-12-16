@@ -73,6 +73,7 @@ def get_next_event(calendars):
     """Get the next upcoming event from multiple calendars"""
     now = datetime.now(tz=timezone.utc)
     now_local = now.astimezone()
+    system_tz = now_local.tzinfo
     tomorrow = now_local + timedelta(days=1)
     
     upcoming_events = []
@@ -90,10 +91,13 @@ def get_next_event(calendars):
                 # Convert to datetime if it's a date
                 if hasattr(event_start.dt, 'date'):
                     start_dt = event_start.dt
+                    # Convert to system timezone if it has timezone info
+                    if hasattr(start_dt, 'tzinfo') and start_dt.tzinfo is not None:
+                        start_dt = start_dt.astimezone(system_tz)
                 else:
                     # It's a date, convert to datetime at start of day
                     start_dt = datetime.combine(event_start.dt, datetime.min.time())
-                    start_dt = start_dt.replace(tzinfo=now_local.tzinfo)
+                    start_dt = start_dt.replace(tzinfo=system_tz)
                 
                 if start_dt > now_local:
                     summary = str(event.get('summary', 'No title'))

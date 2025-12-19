@@ -142,6 +142,18 @@
               }
             ];
           }
+          {
+            profile.name = "tv-only";
+            profile.outputs = [
+              {
+                criteria = "${builtinDisplay}";
+                status = "disable";
+              }
+              {
+                criteria = "Hisense Electric Co., Ltd. HISENSE-TV 0x81010101";
+              }
+            ];
+          }
         ]
         ++ lib.lists.flatten (
           lib.lists.imap0

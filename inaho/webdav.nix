@@ -55,7 +55,11 @@ in
     mode = "0400";
   };
 
-  kiyurica.tailscale.cert.enable = true;
+  kiyurica.tailscale.cert = {
+    enable = true;
+    user = "nginx";
+    group = "nginx";
+  };
 
   services.nginx = {
     enable = true;

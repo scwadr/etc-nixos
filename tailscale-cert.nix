@@ -22,6 +22,18 @@ in
       default = "/var/lib/tailscale-cert";
       description = "Path where the certificate files will be stored";
     };
+
+    user = lib.mkOption {
+      type = lib.types.str;
+      default = "root";
+      description = "User that should own the certificate files";
+    };
+
+    group = lib.mkOption {
+      type = lib.types.str;
+      default = "root";
+      description = "Group that should own the certificate files";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -53,7 +65,7 @@ in
             --key-file "$CERT_PATH/$DOMAIN.key" \
             "$DOMAIN"
 
-          chown -R root:root "$CERT_PATH"
+          chown -R ${cfg.user}:${cfg.group} "$CERT_PATH"
           chmod 600 "$CERT_PATH"/*.key
           chmod 644 "$CERT_PATH"/*.crt
 

@@ -77,9 +77,10 @@ in
         {
           addr = domain;
           port = 8088;
-          ssl = true;
         }
       ];
+
+      onlySSL = true;
 
       sslCertificate = "${certPath}/${domain}.crt";
       sslCertificateKey = "${certPath}/${domain}.key";

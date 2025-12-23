@@ -81,6 +81,7 @@ in
         {
           addr = domain;
           port = 8088;
+          ssl = true;
         }
       ];
 

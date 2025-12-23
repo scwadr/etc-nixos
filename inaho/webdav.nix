@@ -3,7 +3,7 @@
 let
   certPath = config.kiyurica.tailscale.cert.certPath;
   domain = "inaho.tailcbbed9.ts.net";
-  
+
   webdavLocations = {
     "/" = {
       root = "/var/lib/webdav/joplin";
@@ -87,12 +87,15 @@ in
       locations = webdavLocations;
     };
   };
-  
+
   systemd.services.nginx = {
     serviceConfig.StateDirectory = "webdav";
     after = [ "provision-tailscale-cert.service" ];
     wants = [ "provision-tailscale-cert.service" ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 8087 8088 ];
+  networking.firewall.allowedTCPPorts = [
+    8087
+    8088
+  ];
 }

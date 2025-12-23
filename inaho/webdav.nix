@@ -5,22 +5,6 @@ let
   domain = "inaho.tailcbbed9.ts.net";
 
   webdavLocations = {
-    "/" = {
-      root = "/var/lib/webdav/joplin";
-      extraConfig = ''
-        client_body_temp_path /var/lib/webdav/tmp;
-        dav_methods PUT DELETE MKCOL COPY MOVE;
-        dav_ext_methods PROPFIND OPTIONS;
-        dav_access user:rw group:rw all:r;
-
-        client_max_body_size 0;
-        create_full_put_path on;
-
-        auth_basic "Joplin WebDAV";
-        auth_basic_user_file ${config.age.secrets.webdav-htpasswd.path};
-      '';
-    };
-
     "/convind4" = {
       root = "/var/lib/webdav/convind4";
       extraConfig = ''
@@ -43,6 +27,22 @@ let
         if ($request_method = 'OPTIONS') {
           return 204;
         }
+      '';
+    };
+
+    "/" = {
+      root = "/var/lib/webdav/joplin";
+      extraConfig = ''
+        client_body_temp_path /var/lib/webdav/tmp;
+        dav_methods PUT DELETE MKCOL COPY MOVE;
+        dav_ext_methods PROPFIND OPTIONS;
+        dav_access user:rw group:rw all:r;
+
+        client_max_body_size 0;
+        create_full_put_path on;
+
+        auth_basic "Joplin WebDAV";
+        auth_basic_user_file ${config.age.secrets.webdav-htpasswd.path};
       '';
     };
   };

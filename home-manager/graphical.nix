@@ -81,7 +81,7 @@ in
     with types;
     mkOption {
       type = path;
-      default = ../wallpapers/c11-207.jpg;
+      default = ../wallpapers/arima-onsen.jpg;
       description = "Path to the background/wallpaper image file";
     };
 

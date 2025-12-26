@@ -32,6 +32,7 @@
     declarative-flatpak.nixosModules.default
     ../flatpak/org.libreoffice.LibreOffice.nix
     ../flatpak/com.github.flxzt.rnote.nix
+    ../sayonara.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

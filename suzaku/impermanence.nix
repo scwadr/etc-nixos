@@ -36,7 +36,6 @@
         ".mozilla/firefox"
         ".thunderbird"
         ".config/syncthing"
-        ".config/sayonara"
         ".config/github-copilot"
         ".config/.copilot"
         ".config/joplin"

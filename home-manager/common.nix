@@ -12,7 +12,6 @@
     ./pexec.nix
     ./neovim.nix
     ./fonts.nix
-    ./sayonara.nix
     ./kicad.nix
   ];
 

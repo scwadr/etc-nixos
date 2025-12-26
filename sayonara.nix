@@ -1,5 +1,6 @@
 {
   specialArgs,
+  config,
   pkgs,
   lib,
   ...
@@ -9,11 +10,13 @@ let
     inherit (pkgs) lib;
     inherit pkgs;
   };
+  configRoot = config;
   sandboxed-sayonara = mkNixPak {
     config =
       { sloth, ... }:
       {
         app.package = pkgs.sayonara;
+        app.binPath = "bin/sayonara";
         dbus.enable = true;
         dbus.policies = {
           "org.freedesktop.DBus" = "talk";
@@ -23,7 +26,7 @@ let
         bubblewrap = {
           network = false;
           bind.ro = [
-            "${config.services.syncthing.settings.folders."inaba".path}/music-library"
+            "${configRoot.services.syncthing.settings.folders."inaba".path}/music-library"
           ];
           bind.dev = [ "/dev/dri" ];
         };

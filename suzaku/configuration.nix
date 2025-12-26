@@ -28,7 +28,6 @@
     ../adb.nix
     ../vnc.nix
     ../virt.nix
-    ../wacom.nix
     ../codex.nix
     declarative-flatpak.nixosModules.default
     ../flatpak/org.libreoffice.LibreOffice.nix

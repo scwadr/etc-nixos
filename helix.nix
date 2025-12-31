@@ -5,6 +5,10 @@
   ...
 }:
 {
+  imports = [
+    ./home-manager.nix
+  ];
+
   options.kiyurica.lsps = lib.mkOption {
     type =
       with lib;
@@ -30,7 +34,20 @@
         '';
     in
     {
+      kiyurica.home-manager.enable = true;
       users.users.kiyurica.packages = with pkgs; [ helix ] ++ builtins.map wrapLsp config.kiyurica.lsps;
       environment.variables.editor = lib.mkOverride 900 "hx";
+      home-manager.users.kiyurica =
+        { ... }:
+        {
+          programs.helix = {
+            enable = true;
+            defaultEditor = true;
+            settings = {
+              theme = "base16_transparent";
+              editor.line-number = "relative";
+            };
+          };
+        };
     };
 }

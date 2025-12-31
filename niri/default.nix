@@ -286,6 +286,7 @@
                       "Mod+Shift+E".action = quit;
                       "Mod+Shift+P".action = power-off-monitors;
                       "Mod+Escape".action = toggle-keyboard-shortcuts-inhibit;
+                      "Mod+Ctrl+Shift+F".action = toggle-windowed-fullscreen;
                     }
                     // (builtins.foldl' (a: b: a // b) { } (
                       builtins.map (i: {

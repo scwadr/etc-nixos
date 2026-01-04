@@ -19,7 +19,7 @@
     ../i18n.nix # japanese input / language settings
     ../doas.nix # sudo replacement
     ../sound.nix
-    ../sway.nix # window manager
+    ../niri # window manager
     ../vlc.nix # VLC with Blu-ray decode keys
   ];
 
@@ -34,12 +34,15 @@
   boot.loader.efi.canTouchEfiVariables = true;
   #boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  kiyurica.desktop.sway.enable = true;
+  kiyurica.desktop.niri = {
+    enable = true;
+    enableUWSM = true;
+  };
   services.greetd = {
     enable = true;
     settings.default_session = {
       # "autologin" to kiyurica
-      command = "uwsm start /run/current-system/sw/bin/sway";
+      command = "uwsm start /run/current-system/sw/bin/niri";
       user = "kiyurica";
     };
   };
@@ -91,12 +94,12 @@
       services.wlsunset.temperature.night = 4000;
 
       # startup command line
-      wayland.windowManager.sway.config.startup = lib.mkForce [
+      programs.niri.settings.spawn-at-startup = [
         {
-          command = "${pkgs.chromium}/bin/chromium '--proxy-server=socks5://ik1-435-49723.tailcbbed9.ts.net:1080' --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' https://tver.jp";
+          sh = "${pkgs.chromium}/bin/chromium '--proxy-server=socks5://ik1-435-49723.tailcbbed9.ts.net:1080' --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' https://tver.jp";
         }
         {
-          command = "${pkgs.microsoft-edge}/bin/microsoft-edge '--proxy-server=socks5://ik1-435-49723.tailcbbed9.ts.net:1080' https://www.web.nhk";
+          sh = "${pkgs.microsoft-edge}/bin/microsoft-edge '--proxy-server=socks5://ik1-435-49723.tailcbbed9.ts.net:1080' https://www.web.nhk";
         }
       ];
 
@@ -114,27 +117,16 @@
       };
 
       # output display config
-      wayland.windowManager.sway.config = {
-        output = {
-          "HDMI-A-2" = {
-            # 1080p is enough and don't want to stress the GPU too much
-            mode = "1920x1080@60.000Hz";
-            pos = "0 0";
-            scale = "1";
-          };
-        };
+      programs.niri.settings.outputs."HDMI-A-2" = {
+        # 1080p is enough and don't want to stress the GPU too much
+        mode.width = 1920;
+        mode.height = 1080;
+        mode.refresh = 60.0;
+        position.x = 0;
+        position.y = 0;
+        scale = 1;
       };
 
-      # mainly for watching tv, so we don't want idle-lock
-      kiyurica.graphical.idle = false;
-      # borders needed for normies
-      kiyurica.sway.noBorder = false;
-      wayland.windowManager.sway.config.window.titlebar = true;
-      # we want each window to be ~fullscreen
-      wayland.windowManager.sway.extraConfig = ''
-        workspace_layout tabbed
-      '';
-      kiyurica.graphical.background = false;
       kiyurica.service-status = [
         {
           serviceName = "tailscaled.service";

@@ -37,7 +37,8 @@
           maxAge = "31536000";
         };
       };
-      "geofront" = {
+      "geofront" = rec {
+        enable = builtins.elem config.networking.hostName devices;
         id = "e2kwg-rebhd";
         label = "GF-01";
         path = "/home/kiyurica/inaba/geofront";

@@ -133,6 +133,9 @@
           key = "VPN";
         }
       ];
+
+      # default for windows to use the full screen
+      programs.niri.settings.layout.default-column-width.proportion = lib.mkForce 1;
     };
 
   environment.systemPackages = [

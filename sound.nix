@@ -4,7 +4,7 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    pulse.enable = true;
+    wireplumber.enable = true;
   };
 
   home-manager.users.kiyurica = {
@@ -12,7 +12,7 @@
       (
         { pkgs, ... }:
         {
-          home.packages = [ pkgs.helvum ];
+          home.packages = [ pkgs.pwvucontrol ];
         }
       )
     ];

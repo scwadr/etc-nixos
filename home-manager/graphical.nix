@@ -165,7 +165,7 @@ in
               ++ [
                 "tray"
                 "network"
-                "pulseaudio"
+                "wireplumber"
                 "mpris"
               ]
               ++ (map (cfg: "custom/${cfg.key}") cfg.service-status)
@@ -214,16 +214,14 @@ in
               tooltip-format-disconnected = "切";
               rotate = rotationAngle;
             };
-            "pulseaudio" = {
+            "wireplumber" = {
               format-icons = {
                 headphone = "ﾍ";
                 hdmi = "H";
                 bluetooth = "ᛒ";
               };
               format = "{volume}{icon}";
-              format-bluetooth = "{volume}{icon}";
-              on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-              ignored-sinks = [ "Easy Effects Sink" ];
+              on-click = "pwvucontrol";
             };
             "mpris" = {
               format = "{status_icon}{player_icon}{dynamic}";

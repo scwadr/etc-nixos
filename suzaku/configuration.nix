@@ -23,6 +23,7 @@
     ../common.nix
     ../power.nix
     ../power-efficiency.nix
+    ../sound.nix
     ../vlc.nix
     ../tpm.nix
     ../adb.nix

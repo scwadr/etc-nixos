@@ -113,17 +113,20 @@ def get_next_event(calendars):
                         end_dt = end_dt.replace(tzinfo=system_tz)
                 
                 summary = str(event.get('summary', 'No title'))
+                location = str(event.get('location', '')) if event.get('location') else None
                 
                 # Check if event is current (started but not ended)
                 if start_dt <= now_local and (end_dt is None or end_dt > now_local):
                     current_events.append({
                         'start': start_dt,
-                        'summary': summary
+                        'summary': summary,
+                        'location': location
                     })
                 elif start_dt > now_local:
                     upcoming_events.append({
                         'start': start_dt,
-                        'summary': summary
+                        'summary': summary,
+                        'location': location
                     })
     
     if not upcoming_events:
@@ -149,7 +152,11 @@ def get_next_event(calendars):
     # Add current events to tooltip
     for e in current_events:
         time_str = e['start'].strftime('%H:%M')
-        tooltip_entries.append(f"{time_str} {e['summary']} (current)")
+        entry = f"{time_str} {e['summary']}"
+        if e.get('location'):
+            entry += f" @ {e['location']}"
+        entry += " (current)"
+        tooltip_entries.append(entry)
     
     # Add upcoming events to tooltip
     for e in upcoming_events:
@@ -159,7 +166,10 @@ def get_next_event(calendars):
                 time_str = f"{hour_24:02d}:{e['start'].minute:02d}"
             else:
                 time_str = e['start'].strftime('%H:%M')
-            tooltip_entries.append(f"{time_str} {e['summary']}")
+            entry = f"{time_str} {e['summary']}"
+            if e.get('location'):
+                entry += f" @ {e['location']}"
+            tooltip_entries.append(entry)
     tooltip = '\n'.join(tooltip_entries)
     
     return {

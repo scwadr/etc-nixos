@@ -14,8 +14,7 @@
   config = lib.mkIf config.powertop-tune.enable {
     systemd.services.powertop-tune = {
       description = "run powertop tunings";
-      path = [ pkgs.bash ];
-      serviceConfig.ExecStart = "sh ${config.powertop-tune.path}";
+      serviceConfig.ExecStart = "${pkgs.bash}/bin/sh ${config.powertop-tune.path}";
       serviceConfig.ExecStartPost = ''sh -c 'for f in $(find /sys/bus/usb/drivers/usbhid -regex '.*\/[0-9:.-]+' -printf '%f\n' | cut -d ":" -f 1 | sort -u); do echo on >| "/sys/bus/usb/devices/$f/power/control"; done' '';
       serviceConfig.Type = "oneshot";
       wantedBy = [

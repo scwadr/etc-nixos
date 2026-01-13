@@ -20,5 +20,6 @@
     ./keepassxc.nix
     ./sandbox-dev.nix
     ./powertop-tune.nix
+    ./mosh.nix
   ];
 }

@@ -159,4 +159,6 @@
       exec-name = "nil";
     } # Nix
   ];
+
+  kiyurica.mosh.enable = true;
 }

@@ -26,8 +26,7 @@
                 "fuzzel"
               ];
               "Mod+Shift+Return".action.spawn = [
-                "${pkgs.gtk3}/bin/gtk-launch"
-                "org.mozilla.firefox"
+                "firefox"
               ];
               "Mod+Alt+Return".action.spawn = [
                 "${pkgs.gtk3}/bin/gtk-launch"

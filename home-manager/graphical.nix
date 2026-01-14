@@ -347,7 +347,7 @@ in
       enable = true;
       readOnly = true;
       entries = [
-        "/var/lib/flatpak/exports/share/applications/org.mozilla.firefox.desktop"
+        "/run/current-system/sw/share/applications/firefox.desktop"
         "/var/lib/flatpak/exports/share/applications/org.mozilla.Thunderbird.desktop"
         "/var/lib/flatpak/exports/share/applications/io.github.alainm23.planify.desktop"
       ];

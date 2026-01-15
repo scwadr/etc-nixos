@@ -19,7 +19,20 @@ let
         imports = with nixpak.nixpakModules; [
           gui-base
         ];
-        app.package = pkgs.libreoffice;
+        app = {
+          package = pkgs.libreoffice;
+          binPath = "bin/libreoffice";
+          extraEntrypoints = [
+            "bin/sbase"
+            "bin/scalc"
+            "bin/sdraw"
+            "bin/simpress"
+            "bin/smath"
+            "bin/soffice"
+            "bin/swriter"
+            # "bin/unopkg"
+          ];
+        };
 
         flatpak.appId = "org.libreoffice.LibreOffice";
         fonts.fonts = config.fonts.packages; # https://github.com/nixpak/nixpak/issues/196

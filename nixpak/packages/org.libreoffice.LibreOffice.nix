@@ -22,16 +22,16 @@ let
         app = {
           package = pkgs.libreoffice;
           binPath = "bin/libreoffice";
-          extraEntrypoints = [
-            "bin/sbase"
-            "bin/scalc"
-            "bin/sdraw"
-            "bin/simpress"
-            "bin/smath"
-            "bin/soffice"
-            "bin/swriter"
-            # "bin/unopkg"
-          ];
+          # extraEntrypoints = [ # TODO: fix
+          #   "bin/sbase"
+          #   "bin/scalc"
+          #   "bin/sdraw"
+          #   "bin/simpress"
+          #   "bin/smath"
+          #   "bin/soffice"
+          #   "bin/swriter"
+          #   # "bin/unopkg"
+          # ];
         };
 
         flatpak.appId = "org.libreoffice.LibreOffice";

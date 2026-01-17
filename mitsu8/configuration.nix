@@ -99,7 +99,7 @@
           sh = "${pkgs.chromium}/bin/chromium --password-store=basic '--proxy-server=socks5://ik1-435-49723.tailcbbed9.ts.net:1080' --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' https://tver.jp";
         }
         {
-          sh = "${pkgs.microsoft-edge}/bin/microsoft-edge '--proxy-server=socks5://ik1-435-49723.tailcbbed9.ts.net:1080' https://www.web.nhk";
+          sh = "${pkgs.microsoft-edge}/bin/microsoft-edge --password-store=basic '--proxy-server=socks5://ik1-435-49723.tailcbbed9.ts.net:1080' https://www.web.nhk";
         }
       ];
 

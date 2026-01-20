@@ -120,7 +120,7 @@ in
               key,
               propertyName,
               propertyValue,
-              user,
+              user ? false,
             }:
             let
               escapedServiceName = builtins.replaceStrings [ "." "-" ] [ "_2e" "_2d" ] serviceName;

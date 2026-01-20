@@ -85,7 +85,6 @@ button:hover {
 #scratchpad,
 #mpd,
 #custom-systemd-backup,
-#custom-systemd-hisame,
 #custom-next-event {
     padding: 0 8px;
     color: #86cecb;
@@ -279,7 +278,7 @@ label:focus {
   color: #2a5c45;
 }
 
-#custom-systemd-backup:not(.success), #custom-systemd-hisame:not(.success) {
+#custom-systemd-backup:not(.success) {
   background-color: rgba(255, 98, 0, 0.2);
 }
 

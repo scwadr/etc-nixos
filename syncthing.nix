@@ -75,7 +75,6 @@
       home.file."${config.services.syncthing.settings.folders.inaba.path}/.stignore".text =
         lib.mkDefault ''
           .direnv
-          /hisame
           __pycache__
         '';
     };

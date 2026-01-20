@@ -66,6 +66,10 @@
 
   programs.dconf.enable = true;
 
+  # Needed for xdg-document-portal (/run/user/$UID/doc) so sandboxed apps (flatpak/nixpak)
+  # can write files picked via the portal.
+  programs.fuse.userAllowOther = true;
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans

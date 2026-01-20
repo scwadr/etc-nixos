@@ -1,3 +1,4 @@
+# https://github.com/A1ca7raz/nurpkgs/blob/0636255a9b67e86618a29737c2dc0304fbb5326e/pkgs/_nixpaks/_modules/desktop.nix
 {
   config,
   lib,
@@ -29,9 +30,6 @@ let
           "org.mozilla.firefox_beta.*" = "own";
           "org.mpris.MediaPlayer2.firefox.*" = "own";
           "org.freedesktop.NetworkManager" = "talk";
-
-          # Required for GTK file chooser / XDG document portal integration.
-          "org.freedesktop.portal.*" = "talk";
         };
 
         flatpak.appId = "org.mozilla.firefox";
@@ -54,6 +52,7 @@ let
               "/app/etc/firefox"
             ]
             "/etc/machine-id"
+            "/run/dbus/system_bus_socket"
           ];
           bind.dev = [ "/dev/shm" ];
         };

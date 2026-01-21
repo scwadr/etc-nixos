@@ -13,6 +13,7 @@
     ../power-efficiency.nix
     ../sound.nix
     ../tpm.nix
+    ../secureboot.nix
     #../virt.nix
     #../nixpak/packages/org.kde.ark.nix
     #../nixpak/packages/org.mozilla.firefox.nix

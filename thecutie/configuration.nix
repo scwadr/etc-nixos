@@ -133,6 +133,13 @@
           output.scale = 1.0;
           output.adaptiveSync = true;
         }
+        {
+          output.criteria = "BOE 0x087F Unknown";
+          output.mode = "1920x1080@60.008Hz";
+          output.scale = 1.0;
+          output.adaptiveSync = true;
+          output.position = "0,1080";
+        }
       ];
       kiyurica.icsUrlPath = config.age.secrets.icsUrlPath.path;
     };

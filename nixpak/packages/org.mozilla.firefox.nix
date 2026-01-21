@@ -42,6 +42,8 @@ let
           sockets.pipewire = true;
           dieWithParent = true;
           env.GTK_USE_PORTAL = "1";
+          # Make xdg-desktop-portal treat this as a sandboxed app and export picked files via document-portal.
+          env.FLATPAK_ID = "org.mozilla.firefox";
           bind.rw = [
             (sloth.concat' sloth.runtimeDir "/doc")
             (sloth.concat' sloth.homeDir "/.mozilla") # TODO: figure out how to put this under .var/nixpak-app

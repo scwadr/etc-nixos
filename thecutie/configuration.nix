@@ -169,7 +169,7 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
-  # kiyurica.gatech-vpn.enable = true;
+  kiyurica.gatech-vpn.enable = true;
 
   # kiyurica.sandbox-dev.enable = true;
 }

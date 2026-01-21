@@ -9,7 +9,7 @@
       randomizedDelaySec = "1d";
       persistent = true;
       dates = lib.mkDefault "Fri 02:30";
-      flake = "github:nyiyui/etc-nixos";
+      flake = "github:scwadr/etc-nixos";
       allowReboot = true;
     };
   };

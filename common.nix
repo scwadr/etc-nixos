@@ -82,18 +82,18 @@
   # TODO: use username@hostname syntax to separate per-host home manager flake thingl
   # https://discourse.nixos.org/t/get-hostname-in-home-manager-flake-for-host-dependent-user-configs/18859/2
 
-  home-manager.users.kiyurica = {
+  home-manager.users.artems = {
     imports = [ ./home-manager/common.nix ];
   };
   home-manager.extraSpecialArgs = specialArgs;
 
   programs.fish.enable = true;
 
-  users.groups.kiyurica = { };
-  users.users.kiyurica = {
+  users.groups.artems = { };
+  users.users.artems = {
     isNormalUser = true;
-    description = "Ken Shibata";
-    group = "kiyurica";
+    description = "Artem Shelestov";
+    group = "artems";
     extraGroups = [
       "uucp"
       "networkmanager"
@@ -103,16 +103,10 @@
       "dialout"
     ];
     shell = pkgs.fish;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINEhH+5s0m+lBC898M/nrWREaDblRCPSpL6+9wkoZdel inaba@nyiyui.ca"
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBbPVUjEWdEEWgE7z78euFUVJtNzQ4267esBzytfqeWmGhfjkEoe9TdJRvOily0jn0TVrvAxdXYqMksB4WUkhfY="
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHIr5uQCGECocHl3JKYH9etRA0NOdg9N9+d9ElgPYuCT+Iw3yeA+GAcArfPADxfSqjhpITPJkxWsSdaNmKLrgpA= kiyurica@suzaku.dev.kiyuri.ca"
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNAOclCrjD6mtga3MNTjuwveU2/HyTukLACA7KIX1v0OyNW/GBaXHSJ4OikzNURUrhVUbQtfEtAiMlfYiLnPEQw= pixel-6a"
-    ];
     homeMode = "770";
   };
 
-  nix.settings.trusted-users = [ "kiyurica" ];
+  nix.settings.trusted-users = [ "artems" ];
 
   environment.shells = [ pkgs.fish ];
 
@@ -162,6 +156,4 @@
       exec-name = "nil";
     } # Nix
   ];
-
-  kiyurica.mosh.enable = true;
 }

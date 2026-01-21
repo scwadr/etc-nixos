@@ -50,77 +50,13 @@
       ...
     }@attrs:
     rec {
-      nixosConfigurations.mitsu8 = nixpkgs.lib.nixosSystem rec {
+      nixosConfigurations.thecutie = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         specialArgs = attrs // {
           inherit system;
         };
         modules = [
-          ./mitsu8/configuration.nix
-          agenix.nixosModules.default
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                python310 = attrs.nixpkgs-unstable.legacyPackages.${system}.python310;
-              })
-            ];
-          }
-        ];
-      };
-      nixosConfigurations.minato = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = attrs // {
-          inherit system;
-        };
-        modules = [
-          ./minato/configuration.nix
-          agenix.nixosModules.default
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                python310 = attrs.nixpkgs-unstable.legacyPackages.${system}.python310;
-              })
-            ];
-          }
-        ];
-      };
-      nixosConfigurations.suzaku = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = attrs // {
-          inherit system;
-        };
-        modules = [
-          ./suzaku/configuration.nix
-          agenix.nixosModules.default
-        ];
-      };
-      nixosConfigurations.inaho = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = attrs // {
-          inherit system;
-        };
-        modules = [
-          ./inaho/configuration.nix
-          agenix.nixosModules.default
-        ];
-      };
-      nixosConfigurations.misaki = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = attrs // {
-          inherit system;
-        };
-        modules = [
-          ./misaki/configuration.nix
-          agenix.nixosModules.default
-        ];
-      };
-      nixosConfigurations.minamo = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = attrs // {
-          inherit system;
-        };
-        modules = [
-          ./minamo/configuration.nix
+          ./thecutie/configuration.nix
           agenix.nixosModules.default
         ];
       };
@@ -134,7 +70,6 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             nixfmt-rfc-style
-            (python3.withPackages (p: [ p.pyserial ]))
           ];
         };
       }

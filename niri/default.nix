@@ -29,7 +29,7 @@
       enable = true;
       # package = niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
     };
-    home-manager.users.kiyurica = {
+    home-manager.users.artems = {
       imports = [
         niri.homeModules.niri
         ../home-manager/graphical.nix

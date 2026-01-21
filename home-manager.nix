@@ -11,7 +11,7 @@
   options.kiyurica.home-manager.enable = lib.mkEnableOption "home-manager configuration";
 
   config = lib.mkIf config.kiyurica.home-manager.enable {
-    home-manager.users.kiyurica = {
+    home-manager.users.artems = {
       imports = [ ./home-manager/base.nix ];
       nixpkgs.config.allowUnfree = true;
       nixpkgs.overlays = [

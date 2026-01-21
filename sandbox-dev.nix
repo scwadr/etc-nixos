@@ -16,13 +16,13 @@
       '';
     in
     lib.mkIf config.kiyurica.sandbox-dev.enable {
-      users.users.kiyurica.packages = [
+      users.users.artems.packages = [
         wrap
         sandbox-dev-command
       ];
 
       kiyurica.home-manager.enable = true;
-      home-manager.users.kiyurica.programs.fish.interactiveShellInit = ''
+      home-manager.users.artems.programs.fish.interactiveShellInit = ''
         functions -c fish_prompt _original_fish_prompt
         function fish_prompt
           if test -n "$KIYURICA_IN_SANDBOX_DEV"

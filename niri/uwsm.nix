@@ -6,7 +6,7 @@
 }:
 {
   config = lib.mkIf (config.kiyurica.desktop.niri.enable && config.kiyurica.desktop.niri.enableUWSM) {
-    home-manager.users.kiyurica = {
+    home-manager.users.artems = {
       imports = [
         {
           programs.niri.settings = {

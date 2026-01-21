@@ -7,7 +7,7 @@
     wireplumber.enable = true;
   };
 
-  home-manager.users.kiyurica = {
+  home-manager.users.artems = {
     imports = [
       (
         { pkgs, ... }:

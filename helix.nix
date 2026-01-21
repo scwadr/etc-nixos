@@ -35,9 +35,9 @@
     in
     {
       kiyurica.home-manager.enable = true;
-      users.users.kiyurica.packages = with pkgs; [ helix ] ++ builtins.map wrapLsp config.kiyurica.lsps;
+      users.users.artems.packages = with pkgs; [ helix ] ++ builtins.map wrapLsp config.kiyurica.lsps;
       environment.variables.editor = lib.mkOverride 900 "hx";
-      home-manager.users.kiyurica =
+      home-manager.users.artems =
         { ... }:
         {
           programs.helix = {

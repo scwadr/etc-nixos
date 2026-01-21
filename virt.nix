@@ -3,5 +3,5 @@
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [ virt-manager ];
-  users.users.kiyurica.extraGroups = [ "libvirtd" ];
+  users.users.artems.extraGroups = [ "libvirtd" ];
 }

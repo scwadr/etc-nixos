@@ -32,7 +32,7 @@
       password-file = config.age.secrets."gatech-vpn-password.cred".path;
     };
 
-    home-manager.users.kiyurica.programs.ssh = {
+    home-manager.users.artems.programs.ssh = {
       enable = true;
       matchBlocks = builtins.listToAttrs (
         map (h: {

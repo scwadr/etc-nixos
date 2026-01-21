@@ -130,7 +130,7 @@
           '${config.kiyurica.ocproxy.server}'
       '';
     };
-    home-manager.users.kiyurica =
+    home-manager.users.artems =
       { config, pkgs, ... }:
       {
         kiyurica.service-status = [

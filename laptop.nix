@@ -15,7 +15,7 @@
       builtinDisplay = config.kiyurica.laptop.builtinDisplay;
     in
     lib.mkIf config.kiyurica.laptop.enable {
-      home-manager.users.kiyurica =
+      home-manager.users.artems =
         { config, lib, ... }:
         {
           config = lib.mkIf config.wayland.windowManager.sway.enable {

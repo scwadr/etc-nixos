@@ -13,12 +13,12 @@
     ../power-efficiency.nix
     ../sound.nix
     ../tpm.nix
-    ../virt.nix
-    ../nixpak/packages/org.kde.ark.nix
-    ../nixpak/packages/org.mozilla.firefox.nix
-    ../nixpak/packages/org.mozilla.Thunderbird.nix
+    #../virt.nix
+    #../nixpak/packages/org.kde.ark.nix
+    #../nixpak/packages/org.mozilla.firefox.nix
+    #../nixpak/packages/org.mozilla.Thunderbird.nix
     # ../nixpak/packages/org.libreoffice.LibreOffice.nix
-    ../nixpak/packages/io.github.alainm23.planify.nix
+    #../nixpak/packages/io.github.alainm23.planify.nix
     ];
 
   # Bootloader.
@@ -172,13 +172,5 @@
 
   # kiyurica.gatech-vpn.enable = true;
 
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      vpl-gpu-rt
-      libvdpau-va-gl
-    ];
-  };
-
-  kiyurica.sandbox-dev.enable = true;
+  # kiyurica.sandbox-dev.enable = true;
 }

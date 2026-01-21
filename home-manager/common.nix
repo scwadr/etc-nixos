@@ -11,7 +11,6 @@
     ./grc.nix
     ./pexec.nix
     ./fonts.nix
-    ./kicad.nix
   ];
 
   programs.git = {
@@ -75,7 +74,6 @@
       sshfs
       git-filter-repo
 
-      pulseaudio
       playerctl
       clipman
       eza
@@ -94,7 +92,6 @@
 
       seahorse
       gcr # for gnome keyring prompt https://github.com/NixOS/nixpkgs/issues/174099#issuecomment-1135974195
-      krita
       gimp
 
       calc
@@ -105,10 +102,6 @@
 
       zathura
       lyx # goated TeX editor
-      texliveFull # compile LyX files to PDF
-
-      joplin
-      joplin-desktop
     ]
     ++ (with pkgs.kdePackages; [
       gwenview
@@ -150,17 +143,6 @@
       "secrets"
       "ssh"
     ];
-  };
-
-  programs.yt-dlp.enable = true;
-  programs.yt-dlp.settings = {
-    write-subs = true;
-    sub-langs = "all";
-    cookies-from-browser = "firefox";
-    no-embed-info-json = true;
-    embed-metadata = true;
-    embed-thumbnail = true;
-    embed-subs = true;
   };
 
   programs.ssh.enableDefaultConfig = false;

@@ -2,12 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixos-hardware, ... }:
+{
+  config,
+  pkgs,
+  nixos-hardware,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
     nixos-hardware.nixosModules.asus-zenbook-ux481-nvidia
     ../common.nix
     ../power-efficiency.nix
@@ -18,13 +23,14 @@
     #../nixpak/packages/org.kde.ark.nix
     ../nixpak/packages/org.mozilla.firefox.nix
     # ../nixpak/packages/org.libreoffice.LibreOffice.nix
-    ];
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-c512f81b-1b63-4a84-b79d-15dbc2c97509".device = "/dev/disk/by-uuid/c512f81b-1b63-4a84-b79d-15dbc2c97509";
+  boot.initrd.luks.devices."luks-c512f81b-1b63-4a84-b79d-15dbc2c97509".device =
+    "/dev/disk/by-uuid/c512f81b-1b63-4a84-b79d-15dbc2c97509";
   networking.hostName = "thecutie"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -60,9 +66,12 @@
   users.users.artems = {
     isNormalUser = true;
     description = "Artem Shelestov";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -72,8 +81,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

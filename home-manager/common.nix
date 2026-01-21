@@ -102,6 +102,8 @@
 
       zathura
       lyx # goated TeX editor
+
+      spotify
     ]
     ++ (with pkgs.kdePackages; [
       gwenview

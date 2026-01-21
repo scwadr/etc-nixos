@@ -187,5 +187,5 @@
 
   kiyurica.gatech-vpn.enable = true;
 
-  # kiyurica.sandbox-dev.enable = true;
+  kiyurica.sandbox-dev.enable = true;
 }

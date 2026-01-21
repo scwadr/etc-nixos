@@ -28,7 +28,7 @@
       enable = true;
       server = "vpn.gatech.edu";
       gateway = "DC Gateway";
-      username = "kshibata6";
+      username = "ashelestov3";
       password-file = config.age.secrets."gatech-vpn-password.cred".path;
     };
 

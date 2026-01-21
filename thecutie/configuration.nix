@@ -121,7 +121,7 @@
         {
           output.criteria = "Chimei Innolux Corporation 0x14D5 Unknown";
           output.mode = "1920x1080@60.008Hz";
-          output.scale = 1;
+          output.scale = 1.0;
           output.adaptiveSync = true;
         }
       ];

@@ -57,7 +57,7 @@ let
             "/etc/machine-id"
             "/run/dbus/system_bus_socket"
           ];
-          bind.dev = [ "/dev/shm" ];
+          bind.dev = [ "/dev/shm" ] ++ (builtins.genList (i: "/dev/video${builtins.toString i}") 4);
         };
       };
   };

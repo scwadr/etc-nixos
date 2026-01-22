@@ -138,6 +138,7 @@
           output.mode = "1920x1080@60.008Hz";
           output.scale = 1.0;
           output.adaptiveSync = true;
+          output.position = "0,0";
         }
         {
           output.criteria = "BOE 0x087F Unknown";
@@ -147,6 +148,10 @@
           output.position = "0,1080";
         }
       ];
+      programs.niri.settings.input.keyboard.xkb = {
+        layout = "us,ua";
+        options="grp:alt_shift_toggle";
+      };
       kiyurica.icsUrlPath = config.age.secrets.icsUrlPath.path;
     };
 

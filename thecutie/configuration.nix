@@ -83,6 +83,7 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+    telegram-desktop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -175,7 +176,17 @@
   #       https://positon.xyz/docs/
 
   programs.light.enable = true;
-
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+  
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;  
+  };
+  
   kiyurica.laptop.enable = true;
   kiyurica.power-efficiency.enable = true;
 
